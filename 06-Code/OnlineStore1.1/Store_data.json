@@ -1,0 +1,83 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Laptop",
+      "price": 1000.0,
+      "category": {
+        "name": "Electronics",
+        "description": "Devices and gadgets"
+      },
+      "stock": 3
+    },
+    {
+      "id": 2,
+      "name": "Smartphone",
+      "price": 700.0,
+      "category": {
+        "name": "Electronics",
+        "description": "Devices and gadgets"
+      },
+      "stock": 0
+    },
+    {
+      "id": 3,
+      "name": "Tablet",
+      "price": 300.0,
+      "category": {
+        "name": "Electronics",
+        "description": "Devices and gadgets"
+      },
+      "stock": 0
+    },
+    {
+      "id": 4,
+      "name": "galletas",
+      "price": 200.0,
+      "category": {
+        "name": "galleta",
+        "description": "Description of galleta"
+      },
+      "stock": 0
+    }
+  ],
+  "sales": [
+    {
+      "username": "client",
+      "productIds": [
+        1
+      ]
+    },
+    {
+      "username": "client",
+      "productIds": [
+        1
+      ]
+    },
+    {
+      "username": "client",
+      "productIds": [
+        1,
+        1
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "productId": 1,
+      "content": "5"
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin123",
+      "isAdmin": true
+    },
+    {
+      "username": "client",
+      "password": "client123",
+      "isAdmin": false
+    }
+  ]
+}
