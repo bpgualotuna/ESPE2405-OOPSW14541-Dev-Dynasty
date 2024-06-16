@@ -1,0 +1,29 @@
+{
+  "usuarios": [
+    {
+      "nombreUsuario": "admin",
+      "contraseña": "admin123",
+      "esAdmin": true
+    },
+    {
+      "nombreUsuario": "marco",
+      "contraseña": "marco123",
+      "esAdmin": false
+    },
+    {
+      "nombreUsuario": "david",
+      "contraseña": "david23",
+      "esAdmin": false
+    },
+    {
+      "nombreUsuario": "enzo",
+      "contraseña": "enzo5",
+      "esAdmin": false
+    },
+    {
+      "nombreUsuario": "isma",
+      "contraseña": "isma7",
+      "esAdmin": false
+    }
+  ]
+}
