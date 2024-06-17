@@ -6,9 +6,11 @@ package ec.edu.espe.megasoft.modelo;
 
 /**
  *
- * @author Marco Chanataxi, Dev Dynasty, DCCO-ESPE
+ * @author , Dev Dynasty, DCCO-ESPE
+ * 
  */
 public class Producto {
+    private static int idCounter = 1; // Declarar idCounter como variable estática
     
     private int id;
     private String nombre;
@@ -17,7 +19,7 @@ public class Producto {
     private int stock;
 
     public Producto(int id, String nombre, double precio, Categoria categoria) {
-        this.id = id;
+        this.id = generarId();;
         this.nombre = nombre;
         this.precio = precio;
         this.categoria = categoria;
@@ -25,15 +27,18 @@ public class Producto {
      
 
     }
-    
-
-    public int getId() {
+        public int getId() {
         return id;
     }
+    
 
-    public void setId(int id) {
-        this.id = id;
+    private static int generarId() {
+        return idCounter++; // Retorna el valor actual de idCounter y luego lo incrementa
     }
+
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getNombre() {
         return nombre;
@@ -71,5 +76,6 @@ public class Producto {
     public String toString() {
         return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", categoria=" + categoria + ", stock=" + stock + '}';
     }
+
     
 }

@@ -22,7 +22,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Marco Chanataxi, Dev Dynasty, DCCO-ESPE
+ * @author , Dev Dynasty, DCCO-ESPE
  */
     public class ControladorTienda {
         private Tienda tienda;

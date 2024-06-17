@@ -131,12 +131,23 @@ public class Menu {
         return respuesta.equalsIgnoreCase("sí");
     }
 
+//   public void mostrarProductos(List<Producto> productos) {
+//        System.out.println("Lista de productos:");
+//       for (Producto producto : productos) {
+//            System.out.println(producto);
+//        }
+//    }
     public void mostrarProductos(List<Producto> productos) {
-        System.out.println("Lista de productos:");
-        for (Producto producto : productos) {
-            System.out.println(producto);
-        }
+    // Imprimir el encabezado de la tabla
+    System.out.printf("%-10s %-20s %-10s%n", "ID", "Nombre", "Precio");
+    System.out.println("-------------------------------------------------------");
+    
+    // Iterar sobre la lista de productos e imprimir cada producto en formato de tabla
+    for (Producto producto : productos) {
+        System.out.printf("%-10d %-20s %-10.2f%n", producto.getId(), producto.getNombre(), producto.getPrecio());
     }
+}
+
 
     public void mostrarOfertas(List<Oferta> ofertas) {
         System.out.println("Ofertas:");
