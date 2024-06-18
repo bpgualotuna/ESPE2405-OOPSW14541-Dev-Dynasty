@@ -22,7 +22,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Marco Chanataxi, Dev Dynasty, DCCO-ESPE
+ * @author , Dev Dynasty, DCCO-ESPE
  */
     public class ControladorTienda {
         private Tienda tienda;
@@ -82,24 +82,65 @@ import java.util.Scanner;
         System.out.print("Ingrese su elección: ");
     }
 
-      private void iniciarSesionCliente() throws IOException {
-        System.out.println("--------------------------------------------------------------------");
-        System.out.print("Ingrese el nombre de usuario: ");
-        String nombreUsuario = scanner.nextLine();
-        System.out.print("Ingrese la contraseña: ");
-        String contraseña = leerContraseña();
+//      private void iniciarSesionCliente() throws IOException {
+//        System.out.println("--------------------------------------------------------------------");
+//        System.out.print("Ingrese el nombre de usuario: ");
+//        String nombreUsuario = scanner.nextLine();
+//        System.out.print("Ingrese la contraseña: ");
+//        String contraseña = leerContraseña();
+//
+//        if (tienda.autenticarUsuario(nombreUsuario, contraseña)) {
+//            if (tienda.esAdministrador(nombreUsuario)) {
+//                System.out.println("Acceso denegado. Este es el acceso de administrador.");
+//            } else {
+//                mostrarMenuCliente();
+//            }
+//        } else {
+//            System.out.println("Credenciales incorrectas, vuelva a intentarlo.");
+//        }
+//    }
+    
+//    private void iniciarSesionCliente() throws IOException {
+//    System.out.println("--------------------------------------------------------------------");
+//    System.out.print("Ingrese el nombre de usuario: ");
+//    String nombreUsuario = scanner.nextLine();
+//    System.out.print("Ingrese la contraseña: ");
+//    String contrasena = leerContraseña();
+//
+//    Usuario usuario = tienda.autenticarUsuario(nombreUsuario, contrasena);
+//    if (usuario != null) {
+//        if (tienda.esAdministrador(nombreUsuario)) {
+//            System.out.println("Acceso denegado. Este es el acceso de administrador.");
+//        } else {
+//            this.usuarioLogueado = usuario;
+//            mostrarMenuCliente();
+//        }
+//    } else {
+//        System.out.println("Credenciales incorrectas, vuelva a intentarlo.");
+//    }
+//}
 
-        if (tienda.autenticarUsuario(nombreUsuario, contraseña)) {
-            if (tienda.esAdministrador(nombreUsuario)) {
-                System.out.println("Acceso denegado. Este es el acceso de administrador.");
-            } else {
-                mostrarMenuCliente();
-            }
+    private void iniciarSesionCliente() throws IOException {
+    System.out.println("--------------------------------------------------------------------");
+    System.out.print("\n\nIngrese el nombre de usuario: ");
+    String nombreUsuario = scanner.nextLine();
+    System.out.print("Ingrese la contraseña: ");
+    String contrasena = leerContraseña();
+
+    Usuario usuario = tienda.autenticarUsuario(nombreUsuario, contrasena);
+    if (usuario != null) {
+        if (tienda.esAdministrador(nombreUsuario)) {
+            System.out.println("Acceso denegado. Este es el acceso de administrador.");
         } else {
-            System.out.println("Credenciales incorrectas, vuelva a intentarlo.");
+            this.usuarioLogueado = usuario;
+            System.out.println("Sesión iniciada correctamente: " + usuario.getNombreUsuario());
+            mostrarMenuCliente();
         }
+    } else {
+        System.out.println("\nCuenta no encontrada. Por favor, regístrese.\n\n");
     }
-
+}
+      
     private void iniciarSesionAdmin() throws IOException {
         System.out.println("--------------------------------------------------------------------");
         System.out.print("Ingrese el nombre de usuario: ");
@@ -176,7 +217,7 @@ import java.util.Scanner;
     tienda.agregarUsuario(nuevoUsuario);
 
     tienda.guardarUsuariosEnJson("datos_tienda.json");
-    System.out.println("¡Registro exitoso! Ahora puede iniciar sesión como cliente.");
+    System.out.println("¡Registro exitoso! Ahora puede iniciar sesión como cliente.\n\n");
 }
 
         public void guardarDatosTienda() {
@@ -212,9 +253,9 @@ import java.util.Scanner;
                         double montoTotal = tienda.calcularMontoTotal(idProductos);
                         System.out.println("Monto total: $" + montoTotal);
 
-                        System.out.print("¿Desea proceder con la compra? (sí/no): ");
+                        System.out.print("¿Desea proceder con la compra? (si/no): ");
                         String confirmar = scanner.next();
-                        if (!confirmar.equalsIgnoreCase("sí")) {
+                        if (!confirmar.equalsIgnoreCase("si")) {
                             System.out.println("Compra cancelada.");
                             break;
                         }
@@ -236,7 +277,7 @@ import java.util.Scanner;
                             switch (opcionCompra) {
                                 case 1:
                                     tienda.comprarProductos(usuarioLogueado.getNombreUsuario(), idProductos); // Pasa el nombre de usuario aquí
-                                    System.out.println("Compra confirmada. Monto total: $" + montoTotal);
+                                   // System.out.println("Compra confirmada. Monto total: $" + montoTotal);
                                     salirMenuCompra = true;
                                     break;
 
