@@ -19,6 +19,7 @@ import java.util.Scanner;
     }
 
     public int mostrarMenuAdmin() {
+        int opcion= scanner.nextInt();
         System.out.println("--------------------------------------------------------------------  ");
         System.out.println("                    MENU DE ADMINISTRADOR");
         System.out.println("--------------------------------------------------------------------  ");
@@ -37,7 +38,6 @@ import java.util.Scanner;
         System.out.println("--------------------------------------------------------------------  ");
         System.out.println("Ingrese su elección:");
         System.out.println("--------------------------------------------------------------------  ");
-        int opcion= scanner.nextInt();
         scanner.nextLine(); // Consumir el salto de línea pendiente
          return opcion;
     }

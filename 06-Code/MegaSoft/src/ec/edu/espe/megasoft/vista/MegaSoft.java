@@ -5,7 +5,7 @@
 package ec.edu.espe.megasoft.vista;
 
 import ec.edu.espe.megasoft.controlador.ControladorTienda;
-import ec.edu.espe.megasoft.modelo.Tienda;
+import ec.edu.espe.megasoft.modelo.*;
 import java.io.IOException;
 
 /** 
@@ -22,12 +22,8 @@ public class MegaSoft {
     Tienda tienda = new Tienda();
     Menu menu = new Menu();
     ControladorTienda controlador = new ControladorTienda(tienda, menu);
-
     controlador.iniciar();
-    
-    
         
-       
     }
 }
 
