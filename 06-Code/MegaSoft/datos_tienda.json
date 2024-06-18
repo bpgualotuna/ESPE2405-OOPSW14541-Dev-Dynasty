@@ -1,0 +1,9 @@
+{
+  "usuarios": [
+    {
+      "nombreUsuario": "cliente123",
+      "contraseña": "cli123",
+      "esAdmin": false
+    }
+  ]
+}
