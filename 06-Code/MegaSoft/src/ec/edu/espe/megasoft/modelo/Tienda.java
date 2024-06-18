@@ -16,7 +16,9 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -120,14 +122,39 @@ import java.util.List;
             usuarios.add(usuario);
         }
 
-       public boolean autenticarUsuario(String nombreUsuario, String contraseña) {
+//       public boolean autenticarUsuario(String nombreUsuario, String contraseña) {
+//    for (Usuario usuario : usuarios) {
+//        if (usuario.getNombreUsuario().equals(nombreUsuario) && usuario.getContraseña().equals(contraseña)) {
+//            return true;
+//        }
+//    }
+//    return false;
+//}
+//        public Usuario autenticarUsuario(String nombreUsuario, String contrasena) {
+//    for (Usuario usuario : usuarios) {
+//        if (usuario.getNombreUsuario().equals(nombreUsuario) && usuario.getContraseña().equals(contrasena)) {
+//            return usuario;
+//        }
+//    }
+//    return null; // Devuelve null si no se encuentra el usuario
+//}
+
+        
+public Usuario autenticarUsuario(String nombreUsuario, String contrasena) {
+    if (usuarios == null || usuarios.isEmpty()) {
+        return null; // Devuelve null si no hay usuarios registrados
+    }
     for (Usuario usuario : usuarios) {
-        if (usuario.getNombreUsuario().equals(nombreUsuario) && usuario.getContraseña().equals(contraseña)) {
-            return true;
+        if (usuario.getNombreUsuario().equals(nombreUsuario) && usuario.getContraseña().equals(contrasena)) {
+            return usuario;
         }
     }
-    return false;
+    return null; // Devuelve null si no se encuentra el usuario
 }
+
+        
+        
+        
        
    public void guardarUsuariosEnJson(String filePath) {
         try {
@@ -135,7 +162,7 @@ import java.util.List;
             UsuarioLista.UsuarioListWrapper wrapper = new UsuarioLista.UsuarioListWrapper();
             wrapper.setUsuarios(this.usuarios);
             jsonFileHandler.guardarEnJson(wrapper, filePath);
-            System.out.println("Usuarios guardados correctamente en " + filePath);
+            System.out.println("Usuarios guardados correctamente en \n" + filePath);
         } catch (IOException e) {
             System.out.println("Error al guardar usuarios en " + filePath + ": " + e.getMessage());
             e.printStackTrace();
@@ -253,16 +280,50 @@ import java.util.List;
             return -1; // Valor de retorno predeterminado si el producto no se encuentra
         }
 
-    public void comprarProductos(String nombreUsuario, List<Integer> idsProductos) throws IOException {
+//    public void comprarProductos(String nombreUsuario, List<Integer> idsProductos) throws IOException {
+//        double montoTotal = 0.0;
+//        List<Producto> productosComprados = new ArrayList<>();
+//
+//        for (int idProducto : idsProductos) {
+//            Producto producto = obtenerProducto(idProducto);
+//            if (producto != null && producto.getStock() > 0) {
+//                montoTotal += producto.getPrecio();
+//                producto.setStock(producto.getStock() - 1); // Reduce el stock en 1 por cada compra
+//                productosComprados.add(producto);
+//            }
+//        }
+//
+//        if (!productosComprados.isEmpty()) {
+//            Venta venta = new Venta(nombreUsuario, idsProductos);
+//            ventas.add(venta);
+//            guardarEnJson(usuarios, "datos_tienda.json"); // Guardar datos después de la compra
+//            System.out.println("Compra confirmada. Monto total: $" + montoTotal);
+//            System.out.println("Productos comprados:");
+//            for (Producto producto : productosComprados) {
+//                System.out.println(producto);
+//            }
+//        } else {
+//            System.out.println("No se compraron productos. Por favor, verifique el stock e intente nuevamente.");
+//        }
+//    }
+public void comprarProductos(String nombreUsuario, List<Integer> idsProductos) throws IOException {
         double montoTotal = 0.0;
         List<Producto> productosComprados = new ArrayList<>();
+        Map<Producto, Integer> cantidadesCompradas = new HashMap<>();
 
         for (int idProducto : idsProductos) {
             Producto producto = obtenerProducto(idProducto);
             if (producto != null && producto.getStock() > 0) {
                 montoTotal += producto.getPrecio();
                 producto.setStock(producto.getStock() - 1); // Reduce el stock en 1 por cada compra
-                productosComprados.add(producto);
+
+                // Actualiza la cantidad comprada de este producto
+                cantidadesCompradas.put(producto, cantidadesCompradas.getOrDefault(producto, 0) + 1);
+
+                // Solo agregar el producto una vez a la lista
+                if (!productosComprados.contains(producto)) {
+                    productosComprados.add(producto);
+                }
             }
         }
 
@@ -270,15 +331,31 @@ import java.util.List;
             Venta venta = new Venta(nombreUsuario, idsProductos);
             ventas.add(venta);
             guardarEnJson(usuarios, "datos_tienda.json"); // Guardar datos después de la compra
-            System.out.println("Compra confirmada. Monto total: $" + montoTotal);
-            System.out.println("Productos comprados:");
+
+            // Calcular el IVA del 15%
+            double iva = montoTotal * 0.15;
+            double montoTotalConIva = montoTotal + iva;
+
+            // Imprimir la confirmación de la compra y los productos comprados en formato de tabla
+            System.out.printf("Compra confirmada%n%-10s %-20s %-10s %-10s%n", "ID", "Nombre", "Precio", "Cantidad");
+            System.out.println("---------------------------------------------------------------");
             for (Producto producto : productosComprados) {
-                System.out.println(producto);
+                int cantidadComprada = cantidadesCompradas.get(producto);
+                System.out.printf("%-10d %-20s %-10.2f %-10d%n", producto.getId(), producto.getNombre(), producto.getPrecio(), cantidadComprada);
             }
+            System.out.println("---------------------------------------------------------------");
+            System.out.printf("%-30s %10.2f%n", "Monto total sin IVA:", montoTotal);
+            System.out.printf("%-30s %10.2f%n", "IVA (15%):", iva);
+            System.out.printf("%-30s %10.2f%n", "Monto total con IVA:", montoTotalConIva);
         } else {
             System.out.println("No se compraron productos. Por favor, verifique el stock e intente nuevamente.");
         }
     }
+
+
+
+        
+        
 
     public double calcularMontoTotal(List<Integer> idsProductos) {
         double montoTotal = 0.0;
@@ -302,18 +379,26 @@ import java.util.List;
     }
 
     // Método para verificar si un usuario existe
+//    public boolean existeUsuario(String nombreUsuario) {
+//        for (Usuario usuario : usuarios) {
+//            if (usuario.getNombreUsuario().equals(nombreUsuario)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }   
     public boolean existeUsuario(String nombreUsuario) {
-        for (Usuario usuario : usuarios) {
-            if (usuario.getNombreUsuario().equals(nombreUsuario)) {
-                return true;
-            }
+    if (this.usuarios == null) {
+        this.usuarios = new ArrayList<>(); // Inicializa si es null
+    }
+    for (Usuario usuario : usuarios) {
+        if (usuario.getNombreUsuario().equals(nombreUsuario)) {
+            return true;
         }
-        return false;
-    }   
-    
-    
+    }
+    return false;
+}
 
     
-    
-    
+  
     }

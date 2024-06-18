@@ -33,7 +33,8 @@ public class Producto {
     
 
     private static int generarId() {
-        return idCounter++; // Retorna el valor actual de idCounter y luego lo incrementa
+              // Implementa la lógica para generar un ID único para cada producto
+        return (int) (Math.random() * 10000);
     }
 
 //    public void setId(int id) {
