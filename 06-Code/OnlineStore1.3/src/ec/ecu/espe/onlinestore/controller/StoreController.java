@@ -83,78 +83,78 @@ public class StoreController {
                 searchProduct();
                 break;
             case 4:
-                
-System.out.print("Enter the product IDs for purchase (enter -1 to finish): ");
-List<Integer> productIds = new ArrayList<>();
-while (true) {
-    int productId = scanner.nextInt();
-    if (productId == -1) break;
-    productIds.add(productId);
-}
 
-double totalAmount = store.calculateTotalAmount(productIds);
-System.out.println("Total amount: $" + totalAmount);
+            System.out.print("Enter the product IDs for purchase (enter -1 to finish): ");
+            List<Integer> productIds = new ArrayList<>();
+            while (true) {
+                int productId = scanner.nextInt();
+                if (productId == -1) break;
+                productIds.add(productId);
+            }
 
-System.out.print("Do you want to proceed with the purchase? (yes/no): ");
-String confirm = scanner.next();
-if (!confirm.equalsIgnoreCase("yes")) {
-    System.out.println("Purchase canceled.");
-    break;
-}
-
-boolean exitPurchaseMenu = false;
-while (!exitPurchaseMenu) {
-    System.out.println("Purchase Menu:");
-    System.out.println("1. Pay for Purchase");
-    System.out.println("2. Add Another Product");
-    System.out.println("3. Remove Product");
-    System.out.println("4. Exit");
-    System.out.print("Enter your choice: ");
-    int purchaseChoice = scanner.nextInt();
-    scanner.nextLine(); // Consume newline
-
-    switch (purchaseChoice) {
-        case 1:
-            store.buyProducts(username, productIds); // Pasa el nombre de usuario aquí
-            System.out.println("Purchase confirmed. Total amount: $" + totalAmount);
-            exitPurchaseMenu = true;
-            break;
-
-        case 2:
-            System.out.print("Enter the ID of the product to add: ");
-            int newProductId = scanner.nextInt();
-            productIds.add(newProductId);
-            totalAmount = store.calculateTotalAmount(productIds);
+            double totalAmount = store.calculateTotalAmount(productIds);
             System.out.println("Total amount: $" + totalAmount);
-            break;
 
-        case 3:
-            if (productIds.isEmpty()) {
-                System.out.println("No products to remove.");
-            } else {
-                System.out.print("Enter the ID of the product to remove: ");
-                int removeProductId = scanner.nextInt();
-                boolean removed = productIds.removeIf(id -> id == removeProductId);
-                if (removed) {
-                    totalAmount = store.calculateTotalAmount(productIds);
-                    System.out.println("Product removed. Total amount: $" + totalAmount);
-                } else {
-                    System.out.println("Product not found.");
+            System.out.print("Do you want to proceed with the purchase? (yes/no): ");
+            String confirm = scanner.next();
+            if (!confirm.equalsIgnoreCase("yes")) {
+                System.out.println("Purchase canceled.");
+                break;
+            }
+
+            boolean exitPurchaseMenu = false;
+            while (!exitPurchaseMenu) {
+                System.out.println("Purchase Menu:");
+                System.out.println("1. Pay for Purchase");
+                System.out.println("2. Add Another Product");
+                System.out.println("3. Remove Product");
+                System.out.println("4. Exit");
+                System.out.print("Enter your choice: ");
+                int purchaseChoice = scanner.nextInt();
+                scanner.nextLine(); // Consume newline
+
+                switch (purchaseChoice) {
+                    case 1:
+                        store.buyProducts(username, productIds); // Pasa el nombre de usuario aquí
+                        System.out.println("Purchase confirmed. Total amount: $" + totalAmount);
+                        exitPurchaseMenu = true;
+                        break;
+
+                    case 2:
+                        System.out.print("Enter the ID of the product to add: ");
+                        int newProductId = scanner.nextInt();
+                        productIds.add(newProductId);
+                        totalAmount = store.calculateTotalAmount(productIds);
+                        System.out.println("Total amount: $" + totalAmount);
+                        break;
+
+                    case 3:
+                        if (productIds.isEmpty()) {
+                            System.out.println("No products to remove.");
+                        } else {
+                            System.out.print("Enter the ID of the product to remove: ");
+                            int removeProductId = scanner.nextInt();
+                            boolean removed = productIds.removeIf(id -> id == removeProductId);
+                            if (removed) {
+                                totalAmount = store.calculateTotalAmount(productIds);
+                                System.out.println("Product removed. Total amount: $" + totalAmount);
+                            } else {
+                                System.out.println("Product not found.");
+                            }
+                        }
+                        break;
+
+                    case 4:
+                        System.out.println("Purchase canceled.");
+                        exitPurchaseMenu = true;
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                        break;
                 }
             }
-            break;
-
-        case 4:
-            System.out.println("Purchase canceled.");
-            exitPurchaseMenu = true;
-            break;
-
-        default:
-            System.out.println("Invalid choice. Please try again.");
-            break;
-    }
-}
-break;  
+            break;  
             case 5:
                 addReview();
                 break;
