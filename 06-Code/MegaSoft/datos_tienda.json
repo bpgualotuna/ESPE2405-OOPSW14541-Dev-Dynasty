@@ -1,8 +1,8 @@
 {
   "usuarios": [
     {
-      "nombreUsuario": "cliente123",
-      "contraseña": "cli123",
+      "nombreUsuario": "kenny",
+      "contraseña": "kenny123",
       "esAdmin": false
     }
   ]
