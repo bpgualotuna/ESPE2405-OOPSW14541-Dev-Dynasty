@@ -8,7 +8,7 @@
         "name": "Electronics",
         "description": "Devices and gadgets"
       },
-      "stock": 3
+      "stock": 2
     },
     {
       "id": 2,
@@ -59,6 +59,13 @@
       "productIds": [
         1,
         1
+      ]
+    },
+    {
+      "username": "client",
+      "productIds": [
+        1,
+        2
       ]
     }
   ],

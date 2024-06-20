@@ -7,7 +7,7 @@ import java.io.IOException;
 
     /**
      *
-     * @author Marco Chanataxi, Dev Dynasty, DCCO-ESPE
+     * @author  Dev Dynasty, DCCO-ESPE
      */
     public class OnlineStore {
         public static void main(String[] args) throws IOException {

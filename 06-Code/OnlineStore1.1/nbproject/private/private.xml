@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/BrayanPOO/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/OnlineStore1.1/src/ec/ecu/espe/onlinestore/controller/StoreController.java</file>
+            <file>file:/C:/BrayanPOO/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/OnlineStore1.1/src/ec/edu/espe/onlinestore/view/AdminMenu.java</file>
+            <file>file:/C:/BrayanPOO/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/OnlineStore1.1/src/ec/edu/espe/onlinestore/view/ClientMenu.java</file>
+            <file>file:/C:/BrayanPOO/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/OnlineStore1.1/src/ec/edu/espe/onlinestore/view/Menu.java</file>
+            <file>file:/C:/BrayanPOO/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/OnlineStore1.1/src/ec/edu/espe/onlinestore/view/OnlineStore.java</file>
+        </group>
     </open-files>
 </project-private>
