@@ -75,8 +75,8 @@ import java.util.Scanner;
         System.out.println("--------------------------------------------------------------------");
         System.out.println("                          MEGASOFT                                 ");
         System.out.println("                      Menu Principal:                                ");
-        System.out.println("         1. Iniciar sesión como Cliente                              ");
-        System.out.println("         2. Iniciar sesión como Administrador                        ");
+        System.out.println("         1. Iniciar sesion como Cliente                              ");
+        System.out.println("         2. Iniciar sesion como Administrador                        ");
         System.out.println("         3. Registrarse como Nuevo Cliente                           ");
         System.out.println("         4. Salir                                                    ");
         System.out.println("--------------------------------------------------------------------");
@@ -296,7 +296,7 @@ import java.util.Scanner;
                         while (!salirMenuReseña) {
                             do {
                                 System.out.println("--------------------------------------------------------------------  ");
-                                System.out.println("\n            Menú de Reseñas                       ");
+                                System.out.println("\n            Menuadmin de Reseñas                       ");
                                 System.out.println("1. Productos con reseñas");
                                 System.out.println("2. Añadir reseñar");
                                 System.out.println("3. Salir");
@@ -380,7 +380,7 @@ import java.util.Scanner;
                         while (!salirMenuEliminacion) {
                             do {
                                 System.out.println("--------------------------------------------------------------------  ");
-                                System.out.println("\n            Menú gestionar productos                      ");
+                                System.out.println("\n            Menu gestionar productos                      ");
                                 System.out.println("1. Listar productos");
                                 System.out.println("2. Eliminar productos");
                                 System.out.println("3. Salir");

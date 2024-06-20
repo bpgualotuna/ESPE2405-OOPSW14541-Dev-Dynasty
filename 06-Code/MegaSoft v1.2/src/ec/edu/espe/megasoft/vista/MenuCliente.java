@@ -23,7 +23,7 @@ public class MenuCliente  {
         System.out.println("--------------------------------------------------------------------  ");
         System.out.println("                         MENU DE CLIENTE"                          );
         System.out.println("--------------------------------------------------------------------  ");
-        System.out.println("Menú de Cliente:");
+        System.out.println("Menu de Cliente:");
         System.out.println("1. Ver Todos los Productos");
         System.out.println("2. Ver Ofertas");
         System.out.println("3. Buscar Producto");
