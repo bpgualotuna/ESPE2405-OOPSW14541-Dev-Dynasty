@@ -1,8 +1,8 @@
 {
   "usuarios": [
     {
-      "nombreUsuario": "2",
-      "contraseña": "admin",
+      "nombreUsuario": "user",
+      "contraseña": "user123",
       "esAdmin": false
     }
   ]
