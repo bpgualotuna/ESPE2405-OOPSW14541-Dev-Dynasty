@@ -17,6 +17,7 @@ import java.io.Console;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -161,21 +162,21 @@ import java.util.Scanner;
         }
 
         public void registrarNuevoCliente(String nombreUsuario, String contraseña) throws IOException {
-        Usuario nuevoUsuario = new Usuario(nombreUsuario, contraseña, false); 
-        tienda.agregarUsuario(nuevoUsuario); 
-        guardarDatosTienda(); 
-    }
+            Usuario nuevoUsuario = new Usuario(nombreUsuario, contraseña, false);
+            tienda.agregarUsuario(nuevoUsuario);
+            guardarDatosTienda();
+        }
 
-         private void registrarNuevoCliente() throws IOException {
-    System.out.println("Registrarse como Nuevo Cliente");
-    System.out.print("Ingrese el nombre de usuario: ");
-    String nombreUsuario = scanner.nextLine();
-    System.out.print("Ingrese la contraseña: ");
-    String contraseña = leerContraseña();
-    if (tienda.existeUsuario(nombreUsuario)) {
-        System.out.println("El nombre de usuario ya existe. Intente con otro nombre de usuario.");
-        return;
-    }
+        private void registrarNuevoCliente() throws IOException {
+            System.out.println("Registrarse como Nuevo Cliente");
+            System.out.print("Ingrese el nombre de usuario: ");
+            String nombreUsuario = scanner.nextLine();
+            System.out.print("Ingrese la contraseña: ");
+            String contraseña = leerContraseña();
+            if (tienda.existeUsuario(nombreUsuario)) {
+                System.out.println("El nombre de usuario ya existe. Intente con otro nombre de usuario.");
+                return;
+            }
 
     Usuario nuevoUsuario = new Usuario(nombreUsuario, contraseña, false);
     tienda.agregarUsuario(nuevoUsuario);
@@ -195,6 +196,7 @@ import java.util.Scanner;
             boolean salir = false;
             while (!salir) {
                 int opcion = menuCliente.mostrarMenuCliente();
+                List<Integer> idProductos = new ArrayList<>();
                 switch (opcion) {
                     case 1:
                         mostrarTodosLosProductos();
@@ -207,7 +209,7 @@ import java.util.Scanner;
                         break;
                     case 4:
                         System.out.print("Ingrese los IDs de los productos para la compra (ingrese -1 para finalizar): ");
-                        List<Integer> idProductos = new ArrayList<>();
+                        
                         while (true) {
                             int idProducto = scanner.nextInt();
                             if (idProducto == -1) break;
@@ -281,7 +283,63 @@ import java.util.Scanner;
                         }
                         break;
                     case 5:
-                        agregarReseña();
+                        
+                        System.out.print("¿Desea añadir una reseña? (si/no): ");
+                        String verificar = scanner.next();
+                        if (!verificar.equalsIgnoreCase("si")) {
+                            System.out.println("Reseña cancelada.");
+                            break;
+                        }
+                        
+                        int opcionReseña = 0;
+                        boolean salirMenuReseña = false;
+                        while (!salirMenuReseña) {
+                            do {
+                                System.out.println("--------------------------------------------------------------------  ");
+                                System.out.println("\n            Menú de Reseñas                       ");
+                                System.out.println("1. Productos con reseñas");
+                                System.out.println("2. Añadir reseñar");
+                                System.out.println("3. Salir");
+                                System.out.println("--------------------------------------------------------------------  ");
+                                System.out.println("Selecciones una opcion: ");
+                                try {
+                                    opcionReseña = scanner.nextInt();
+                                    scanner.nextLine();
+                                    switch (opcionReseña) {
+                                        case 1:
+                                            verReseñas();
+                                            break;
+                                        case 2:
+                                            verReseñas();
+                                            System.out.print("Ingrese el ID del producto al que quiera añadir una reseña: ");
+                                            try {
+                                                agregarReseña();
+                                                System.out.println("Reseña añadida correctamente para el producto " + idProductos);
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Error: Ingrese un ID válido.");
+                                                scanner.nextLine();
+                                            } catch (IndexOutOfBoundsException e) {
+                                                System.out.println("Error: El ID de producto ingresado no es válido.");
+                                                scanner.nextLine();
+                                            }
+                                            break;
+                                        case 3:
+                                            System.out.println("Reseña cancelada.");
+                                            salirMenuReseña = true;
+                                            break;
+                                        default:
+                                            System.out.println("Opción no válida. Intente de nuevo.");
+                                    }
+
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Error: Ingrese un numero valido.");
+                                    scanner.nextLine();
+                                    opcionReseña = 0;
+                                } catch (IndexOutOfBoundsException e) {
+                                    System.out.println("Error: Producto no encontrado");
+                                }
+                            } while (opcionReseña != 3);
+                        }
                         break;
                     case 6:
                         verReseñas();
@@ -302,6 +360,7 @@ import java.util.Scanner;
 
         private void mostrarMenuAdmin() throws IOException {
             boolean salir = false;
+            List<Integer> idProductos = new ArrayList<>();
             while (!salir) {
                 int opcion = menuAdmi.mostrarMenuAdmin();
                 switch (opcion) {
@@ -309,7 +368,65 @@ import java.util.Scanner;
                         agregarProducto();
                         break;
                     case 2:
-                        eliminarProducto();
+                        System.out.print("¿Desea proceder con la Eliminación del producto? (si/no): ");
+                        String verificar = scanner.next();
+                        if (!verificar.equalsIgnoreCase("si")) {
+                            System.out.println("Eliminación cancelada.");
+                            break;
+                        }
+                        
+                        int opcionEliminacion = 0;
+                        boolean salirMenuEliminacion = false;
+                        while (!salirMenuEliminacion) {
+                            do {
+                                System.out.println("--------------------------------------------------------------------  ");
+                                System.out.println("\n            Menú gestionar productos                      ");
+                                System.out.println("1. Listar productos");
+                                System.out.println("2. Eliminar productos");
+                                System.out.println("3. Salir");
+                                System.out.println("--------------------------------------------------------------------  ");
+                                System.out.println("Selecciones una opcion: ");
+                                try {
+                                    opcionEliminacion = scanner.nextInt();
+                                    scanner.nextLine();
+                                    switch (opcionEliminacion) {
+                                        case 1:
+                                            mostrarTodosLosProductos();
+                                            break;
+                                        case 2:
+                                            mostrarTodosLosProductos();
+                                            System.out.print("Ingrese el ID del producto a eliminar: ");
+                                            try {
+                                                int indice = scanner.nextInt();
+                                                scanner.nextLine();
+                                                Integer productoEliminado = idProductos.remove(indice - 1);
+                                                System.out.println("Producto \"" + productoEliminado + "\" eliminado correctamente.");
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Error: Ingrese un ID válido.");
+                                                scanner.nextLine();
+                                            } catch (IndexOutOfBoundsException e) {
+                                                System.out.println("Error: El ID de producto ingresado no es válido.");
+                                                scanner.nextLine();
+                                            }
+                                            break;
+                                        case 3:
+                                            System.out.println("Eliminacion cancelada.");
+                                            salirMenuEliminacion = true;
+                                            break;
+                                        default:
+                                            System.out.println("Opción no válida. Intente de nuevo.");
+                                    }
+
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Error: Ingrese un numero valido.");
+                                    scanner.nextLine();
+                                    opcionEliminacion = 0;
+                                } catch (IndexOutOfBoundsException e) {
+                                    System.out.println("Error: Producto no encontrado");
+                                }
+                            } while (opcionEliminacion != 3);
+                            //scanner.close();
+                        }
                         break;
                     case 3:
                         editarProducto();
@@ -327,13 +444,122 @@ import java.util.Scanner;
                         verReseñas();
                         break;
                     case 8:
-                        gestionarStock();
+                        System.out.print("¿Desea agregar Stock? (si/no): ");
+                        String confirmar = scanner.next();
+                        if (!confirmar.equalsIgnoreCase("si")) {
+                            System.out.println("Agregacion de Stock cancelada.");
+                            break;
+                        }
+
+                        int opcionStock= 0;
+                        boolean salirMenuStock = false;
+                        while (!salirMenuStock) {
+                            do {
+                                System.out.println("--------------------------------------------------------------------  ");
+                                System.out.println("\n            Menú de Stock                     ");
+                                System.out.println("1. Ver Stock");
+                                System.out.println("2. Agregar Stock a otro producto");
+                                System.out.println("3. Salir");
+                                System.out.println("--------------------------------------------------------------------  ");
+                                System.out.println("Selecciones una opcion: ");
+                                try {
+                                    opcionStock = scanner.nextInt();
+                                    scanner.nextLine();
+                                    switch (opcionStock) {
+                                        case 1:
+                                            mostrarTodosLosProductos();
+                                            break;
+                                        case 2:
+                                            mostrarTodosLosProductos();
+                                            System.out.print("Actualizar Stock de los productos ");
+                                            try {
+                                                gestionarStock();
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Error: Ingrese un ID válido.");
+                                                scanner.nextLine();
+                                            } catch (IndexOutOfBoundsException e) {
+                                                System.out.println("Error: El número de ID ingresado no es válido.");
+                                                scanner.nextLine();
+                                            }
+                                            break;
+                                        case 3:
+                                            System.out.println("Eliminacion cancelada.");
+                                            salirMenuStock = true;
+                                            break;
+                                        default:
+                                            System.out.println("Opción no válida. Intente de nuevo.");
+                                    }
+
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Error: Ingrese un numero valido.");
+                                    scanner.nextLine();
+                                    opcionStock = 0;
+                                } catch (IndexOutOfBoundsException e) {
+                                    System.out.println("Error: Producto no encontrado");
+                                }
+                            } while (opcionStock != 3);
+                        }
                         break;
                     case 9:
                         verVentas();
                         break;
                     case 10:
-                        agregarOferta();
+                        //agregarOferta();
+                        System.out.print("¿Desea agregar ofertas a sus productos? (si/no): ");
+                        String validar = scanner.next();
+                        if (!validar.equalsIgnoreCase("si")) {
+                            System.out.println("Agregación de ofertas cancelada.");
+                            break;
+                        }
+
+                        int opcionOferta= 0;
+                        boolean salirMenuOferta = false;
+                        while (!salirMenuOferta) {
+                            do {
+                                System.out.println("--------------------------------------------------------------------  ");
+                                System.out.println("\n            Menú para gestionar ofertas                     ");
+                                System.out.println("1. Listar Productos de oferta");
+                                System.out.println("2. Agregar ofertar de productos");
+                                System.out.println("3. Salir");
+                                System.out.println("--------------------------------------------------------------------  ");
+                                System.out.println("Selecciones una opcion: ");
+                                try {
+                                    opcionOferta = scanner.nextInt();
+                                    scanner.nextLine();
+                                    switch (opcionOferta) {
+                                        case 1:
+                                            mostrarTodosLosProductos();
+                                            break;
+                                        case 2:
+                                            mostrarTodosLosProductos();
+                                            System.out.print("Actualizar productos en Oferta ");
+                                            try {
+                                                agregarOferta();
+                                            } catch (InputMismatchException e) {
+                                                System.out.println("Error: Ingrese un ID válido.");
+                                                scanner.nextLine();
+                                            } catch (IndexOutOfBoundsException e) {
+                                                System.out.println("Error: El número de ID ingresado no es válido.");
+                                                scanner.nextLine();
+                                            }
+                                            break;
+                                        case 3:
+                                            System.out.println(" Oferta cancelada");
+                                            salirMenuOferta = true;
+                                            break;
+                                        default:
+                                            System.out.println("Opción no válida. Intente de nuevo.");
+                                    }
+
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Error: Ingrese un numero valido.");
+                                    scanner.nextLine();
+                                    opcionStock = 0;
+                                } catch (IndexOutOfBoundsException e) {
+                                    System.out.println("Error: Producto no encontrado");
+                                }
+                            } while (opcionOferta != 3);
+                        }
                         break;
                     case 11:
                         salir = true;
@@ -371,10 +597,10 @@ import java.util.Scanner;
         }
 
         private void agregarProducto() throws IOException {
-    Producto producto = menu.obtenerDatosProducto(); 
-    tienda.agregarProducto(producto);
-    menu.mostrarMensaje("Producto agregado exitosamente.");
-    guardarDatosTienda(); 
+            Producto producto = menu.obtenerDatosProducto();
+            tienda.agregarProducto(producto);
+            menu.mostrarMensaje("Producto agregado exitosamente.");
+            guardarDatosTienda();
 }
 
         private void agregarOferta() throws IOException {
@@ -483,21 +709,21 @@ import java.util.Scanner;
     }
         
         private String leerContraseña() {
-    StringBuilder contraseña = new StringBuilder();
-    try {
-        Console console = System.console();
-        if (console == null) {
-            // Para entornos que no soportan System.console()
-            Scanner scanner = new Scanner(System.in);
-            return scanner.nextLine();
-        } else {
-            char[] contraseñaArray = console.readPassword();
-            return new String(contraseñaArray);
-        }
-    } catch (Exception e) {
-        System.out.println("Error al leer la contraseña: " + e.getMessage());
-    }
-    return contraseña.toString();
+            StringBuilder contraseña = new StringBuilder();
+            try {
+                Console console = System.console();
+                if (console == null) {
+                    // Para entornos que no soportan System.console()
+                    Scanner scanner = new Scanner(System.in);
+                    return scanner.nextLine();
+                } else {
+                    char[] contraseñaArray = console.readPassword();
+                    return new String(contraseñaArray);
+                }
+            } catch (Exception e) {
+                System.out.println("Error al leer la contraseña: " + e.getMessage());
+            }
+            return contraseña.toString();
 }
 
 

@@ -81,44 +81,44 @@ import java.util.Scanner;
         System.out.println("--------------------------------------------------------------------");
         System.out.print("Ingrese su elección: ");
     }
+/*
+      private void iniciarSesionCliente() throws IOException {
+        System.out.println("--------------------------------------------------------------------");
+        System.out.print("Ingrese el nombre de usuario: ");
+        String nombreUsuario = scanner.nextLine();
+        System.out.print("Ingrese la contraseña: ");
+        String contraseña = leerContraseña();
 
-//      private void iniciarSesionCliente() throws IOException {
-//        System.out.println("--------------------------------------------------------------------");
-//        System.out.print("Ingrese el nombre de usuario: ");
-//        String nombreUsuario = scanner.nextLine();
-//        System.out.print("Ingrese la contraseña: ");
-//        String contraseña = leerContraseña();
-//
-//        if (tienda.autenticarUsuario(nombreUsuario, contraseña)) {
-//            if (tienda.esAdministrador(nombreUsuario)) {
-//                System.out.println("Acceso denegado. Este es el acceso de administrador.");
-//            } else {
-//                mostrarMenuCliente();
-//            }
-//        } else {
-//            System.out.println("Credenciales incorrectas, vuelva a intentarlo.");
-//        }
-//    }
+        if (tienda.autenticarUsuario(nombreUsuario, contraseña)) {
+            if (tienda.esAdministrador(nombreUsuario)) {
+                System.out.println("Acceso denegado. Este es el acceso de administrador.");
+            } else {
+                mostrarMenuCliente();
+            }
+        } else {
+            System.out.println("Credenciales incorrectas, vuelva a intentarlo.");
+        }
+    }
     
-//    private void iniciarSesionCliente() throws IOException {
-//    System.out.println("--------------------------------------------------------------------");
-//    System.out.print("Ingrese el nombre de usuario: ");
-//    String nombreUsuario = scanner.nextLine();
-//    System.out.print("Ingrese la contraseña: ");
-//    String contrasena = leerContraseña();
-//
-//    Usuario usuario = tienda.autenticarUsuario(nombreUsuario, contrasena);
-//    if (usuario != null) {
-//        if (tienda.esAdministrador(nombreUsuario)) {
-//            System.out.println("Acceso denegado. Este es el acceso de administrador.");
-//        } else {
-//            this.usuarioLogueado = usuario;
-//            mostrarMenuCliente();
-//        }
-//    } else {
-//        System.out.println("Credenciales incorrectas, vuelva a intentarlo.");
-//    }
-//}
+    private void iniciarSesionCliente() throws IOException {
+    System.out.println("--------------------------------------------------------------------");
+    System.out.print("Ingrese el nombre de usuario: ");
+    String nombreUsuario = scanner.nextLine();
+    System.out.print("Ingrese la contraseña: ");
+    String contrasena = leerContraseña();
+
+    Usuario usuario = tienda.autenticarUsuario(nombreUsuario, contrasena);
+    if (usuario != null) {
+        if (tienda.esAdministrador(nombreUsuario)) {
+            System.out.println("Acceso denegado. Este es el acceso de administrador.");
+        } else {
+            this.usuarioLogueado = usuario;
+           mostrarMenuCliente();
+        }
+        } else {
+        System.out.println("Credenciales incorrectas, vuelva a intentarlo.");
+    }
+}*/
 
     private void iniciarSesionCliente() throws IOException {
     System.out.println("--------------------------------------------------------------------");
@@ -363,9 +363,9 @@ import java.util.Scanner;
                             while(!menuEliminar){
                                 System.out.println("--------------------------------------------------------------------  "); 
                                 System.out.println("             Menu de Eliminacion:                     ");
-                                System.out.println("1. Agregar productos a eliminar");
+                                System.out.println("1. Listar Productos");
                                 System.out.println("2. Eliminar Productos");
-                                System.out.println("3. Cancelar");
+                                System.out.println("3. Salir");
                                 System.out.println("--------------------------------------------------------------------  ");
                                 System.out.print("Ingrese su elección: ");
                                 System.out.println("--------------------------------------------------------------------  ");
@@ -407,6 +407,7 @@ import java.util.Scanner;
                             System.out.println("Error al eliminar productos" + e.getMessage());
                         }
                         break;
+                        //List<Integer> idProductos = new ArrayList<>();
                         
                     case 3:
                         editarProducto();
@@ -424,68 +425,8 @@ import java.util.Scanner;
                         verReseñas();
                         break;
                     case 8:
-                        //gestionarStock();
-                        List<Integer> idProductos = new ArrayList<>();
-                        while (true) {
-                            int idProducto = scanner.nextInt();
-                            if (idProducto == -1) break;
-                            idProductos.add(idProducto);
-                        }
-                        try{
-                            System.out.println("¿Desea gestionar su Stock? (si/no): ");
-                            String confirmar = scanner.next();
-                            if(!confirmar.equalsIgnoreCase("si")){
-                                System.out.println("Gestion de Stock cancelada");
-                                break;
-                            }
-                            boolean menuGestios= false;
-                            while(!menuGestios){
-                                System.out.println("--------------------------------------------------------------------  "); 
-                                System.out.println("             Menu gestion de Stock:                     ");
-                                System.out.println("1. Agregar Stock");
-                                System.out.println("2. Agregar Stock a otro producto");
-                                System.out.println("3. Cancelar");
-                                System.out.println("--------------------------------------------------------------------  ");
-                                System.out.print("  Ingrese su elección: ");
-                                System.out.println("--------------------------------------------------------------------  ");
-                                int opcionGestion = scanner.nextInt();
-                                scanner.nextLine(); // Consumir nueva línea
-                                switch(opcionGestion){
-                                    case 1:
-                                        System.out.print("Ingrese el ID del producto a gestionar: ");
-                                        int nuevoIdProducto = scanner.nextInt();
-                                        idProductos.add(nuevoIdProducto);
-                                        
-                                        break;
-                                    case 2:
-                                    if (idProductos.isEmpty()) {
-                                        System.out.println("No hay productos para gestionar.");
-                                    } else {
-                                        System.out.print("Ingrese el ID del producto a gestionar: ");
-                                        int idProductoEliminar = scanner.nextInt();
-                                        boolean eliminado = idProductos.removeIf(id -> id == idProductoEliminar);
-                                        if (eliminado) {
-                                            System.out.println("Producto agregado el Stock." );
-                                        } else {
-                                            System.out.println("Producto no encontrado.");
-                                        }
-                                    }
-                                    break;
-
-                                    case 3:
-                                        System.out.println("Gestion de Stock cancelado.");
-                                        menuGestios = true;
-                                        break;
-
-                                    default:
-                                        System.out.println("Opción inválida. Por favor, intente de nuevo.");
-                                        break;
-                                    }
-                                }
-                        }catch(Exception e){
-                            System.out.println("Error al eliminar productos" + e.getMessage());
-                        }
-                        break;
+                        gestionarStock();
+                        
                     case 9:
                         verVentas();
                         break;
