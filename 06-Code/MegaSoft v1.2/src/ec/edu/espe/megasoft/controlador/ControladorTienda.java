@@ -504,7 +504,6 @@ import java.util.Scanner;
                         verVentas();
                         break;
                     case 10:
-                        //agregarOferta();
                         System.out.print("¿Desea agregar ofertas a sus productos? (si/no): ");
                         String validar = scanner.next();
                         if (!validar.equalsIgnoreCase("si")) {
