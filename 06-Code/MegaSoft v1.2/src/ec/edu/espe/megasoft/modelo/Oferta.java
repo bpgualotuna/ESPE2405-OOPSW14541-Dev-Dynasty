@@ -6,7 +6,7 @@ package ec.edu.espe.megasoft.modelo;
 
 /**
  *
- * @author Marco  Dev Dynasty, DCCO-ESPE
+ * @author Marco Chanataxi, Dev Dynasty, DCCO-ESPE
  */
 public class Oferta {
     

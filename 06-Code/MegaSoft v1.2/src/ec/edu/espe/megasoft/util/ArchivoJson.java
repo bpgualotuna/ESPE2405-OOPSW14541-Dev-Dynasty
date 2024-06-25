@@ -10,33 +10,30 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 
 /**
  *
- * @author  Dev Dynasty, DCCO-ESPE
+ * @author Dev Dynasty, DCCO-ESPE
  */
 public class ArchivoJson {
     
-    private final Gson gson;
+   private final Gson gson;
 
     public ArchivoJson() {
-        gson = new GsonBuilder().setPrettyPrinting().create();
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
-    public void guardarEnJson(Object obj, String filePath) throws IOException {
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    try (FileWriter writer = new FileWriter(filePath)) {
-        gson.toJson(obj, writer);
-    } catch (IOException e) {
-        e.printStackTrace();
-        throw e;
-    }
-}
-    
-    public <T> T cargarDesdeJson(String rutaArchivo, Class<T> clase) throws IOException {
-        try (BufferedReader lector = new BufferedReader(new FileReader(rutaArchivo))) {
-            return gson.fromJson(lector, clase);
+    public synchronized <T> T cargarDesdeJson(String filePath, Class<T> clazz) throws IOException {
+        try (Reader reader = new FileReader(filePath)) {
+            return gson.fromJson(reader, clazz);
         }
     }
-    
+
+    public synchronized void guardarEnJson(Object objeto, String filePath) throws IOException {
+        try (Writer writer = new FileWriter(filePath)) {
+            gson.toJson(objeto, writer);
+        }
+    }
 }
