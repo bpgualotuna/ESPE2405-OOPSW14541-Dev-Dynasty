@@ -86,18 +86,21 @@ public class Menu {
         scanner.nextLine();  // Consumir el carácter de nueva línea residual
         System.out.println("Ingrese la categoría del producto: ");
         String nombreCategoria = scanner.nextLine();
-        Categoria categoria = new Categoria(nombreCategoria, "Descripción de " + nombreCategoria);
+        System.out.println("Ingrese la descripcion producto: ");
+        String descripcionCategoria = scanner.nextLine();
+        Categoria categoria = new Categoria(nombreCategoria,descripcionCategoria);
         return new Producto(0, nombre, precio, categoria);
     }
     
-    public Oferta obtenerDatosOferta() {
-        System.out.println("Ingrese el nombre de la oferta:");
-        String nombre = scanner.nextLine();
-        System.out.println("Ingrese el porcentaje de descuento:");
-        double descuento = scanner.nextDouble();
-        scanner.nextLine(); // Consumir el carácter de nueva línea residual
-        return new Oferta(nombre, descuento);
-    }
+//    public Oferta obtenerDatosOferta(){
+//        System.out.println("Ingrese el nombre de la oferta:");
+//        String nombre = scanner.nextLine();
+//        System.out.println("Ingrese el porcentaje de descuento:");
+//        double descuento = scanner.nextDouble();
+//        scanner.nextLine(); // Consumir el carácter de nueva línea residual
+//        return new Oferta(nombre,categoria,stock,descuento);
+//          
+//    }
 
     public Producto obtenerDatosProductoEditado() {
         System.out.println("Ingrese el nuevo nombre del producto: ");
@@ -139,30 +142,48 @@ public class Menu {
 //    }
  public static void mostrarProductos(List<Producto> productos) {
         // Imprimir el encabezado de la tabla
-        System.out.printf("%-10s  %-15s  %-15s  %-15s  %-10s%n", "ID", "Nombre", "Precio", "Categoria", "Cantidad");
-        System.out.println("------------------------------------------------------------------------");
+        System.out.printf("%-10s  %-15s  %-15s  %-15s  %-10s  %-15s%n", "ID", "Nombre", "Precio", "Categoria", "Cantidad","Descripcion");
+        System.out.println("--------------------------------------------------------------------------------------------");
 
         // Iterar sobre la lista de productos e imprimir cada producto en formato de tabla
         for (Producto producto : productos) {
-            System.out.printf("%-10d  %-15s  %-15.2f  %-15s  %-10d%n", 
+            System.out.printf("%-10d  %-15s  %-15.2f  %-15s  %-10d  %-15s%n", 
                               producto.getId(), 
                               producto.getNombre(),     
                               producto.getPrecio(), 
                               producto.getCategoria().getNombre(), 
-                              producto.getStock());
+                              producto.getStock(),
+                              producto.getCategoria().getDescripcion());
         }
         
-        System.out.println("------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------");
     }
 
 
 
 
     public void mostrarOfertas(List<Oferta> ofertas) {
-        System.out.println("Ofertas:");
+        System.out.println("Ofertas:\n");
+        
+
+       // Imprimir el encabezado de la tabla
+        System.out.printf("%-10s  %-15s  %-23s  %-15s  %-10s  %-15s%n", "ID", "Nombre", "Descripcion", "Categoria", "Cantidad","Descuento");
+        System.out.println("-------------------------------------------------------------------------------------------");
+
+        // Iterar sobre la lista de productos e imprimir cada producto en formato de tabla
         for (Oferta oferta : ofertas) {
-            System.out.println(oferta);
+            System.out.printf("%-10d  %-15s  %-23s  %-15s  %-10d  %-15s%n",
+                              oferta.getId(), 
+                              oferta.getNombre(), 
+                              oferta.getDescripcion(),
+                              oferta.getCategoria(),
+                              oferta.getStock(),
+                              oferta.getDescuento()+"%");
         }
+        
+        System.out.println("-------------------------------------------------------------------------------------------");
+        
+        
     }
 
     public Reseña obtenerDatosReseña() {
@@ -183,8 +204,23 @@ public class Menu {
 
     public void mostrarProducto(Producto producto) {
         if (producto != null) {
-            System.out.println(producto);
-        } else {
+                      
+        System.out.printf("%-10s  %-15s  %-15s  %-15s  %-10s%n", "ID", "Nombre", "Precio", "Categoria", "Cantidad");
+        System.out.println("------------------------------------------------------------------------");
+
+        
+        
+            System.out.printf("%-10d  %-15s  %-15.2f  %-15s  %-10d%n", 
+                              producto.getId(), 
+                              producto.getNombre(),     
+                              producto.getPrecio(), 
+                              producto.getCategoria().getNombre(), 
+                              producto.getStock());
+           System.out.println("------------------------------------------------------------------------");
+        }
+        
+       
+         else{
             System.out.println("Producto no encontrado.");
         }
     }
