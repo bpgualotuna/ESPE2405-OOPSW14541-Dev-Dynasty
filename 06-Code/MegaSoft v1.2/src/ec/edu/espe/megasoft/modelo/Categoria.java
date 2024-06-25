@@ -6,7 +6,7 @@ package ec.edu.espe.megasoft.modelo;
 
 /**
  *
- * @author Marco Chanataxi, Dev Dynasty, DCCO-ESPE
+ * @author  Dev Dynasty, DCCO-ESPE
  */
 public class Categoria {
     private String nombre;

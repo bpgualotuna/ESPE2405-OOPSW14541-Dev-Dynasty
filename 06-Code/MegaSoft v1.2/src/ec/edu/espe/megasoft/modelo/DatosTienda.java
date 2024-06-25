@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  *
- * @author Marco Chanataxi, Dev Dynasty, DCCO-ESPE
+ * @author Dev Dynasty, DCCO-ESPE
  */
 public class DatosTienda {
     private List<Producto> productos;

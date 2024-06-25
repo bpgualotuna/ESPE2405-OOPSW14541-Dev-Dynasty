@@ -1,13 +1,8 @@
 {
   "usuarios": [
     {
-<<<<<<< HEAD
-      "nombreUsuario": "david",
-      "contraseña": "david123",
-=======
-      "nombreUsuario": "user",
-      "contraseña": "user123",
->>>>>>> 48c10393a81060fddcb9ed1db36d357a4c184221
+      "nombreUsuario": "2",
+      "contraseña": "admin",
       "esAdmin": false
     }
   ]
