@@ -10,6 +10,7 @@ import ec.edu.espe.megasoft.modelo.Reseña;
 import ec.edu.espe.megasoft.modelo.Tienda;
 import ec.edu.espe.megasoft.modelo.Usuario;
 import ec.edu.espe.megasoft.modelo.Venta;
+import ec.edu.espe.megasoft.util.ArchivoJson;
 import ec.edu.espe.megasoft.vista.Menu;
 import ec.edu.espe.megasoft.vista.MenuAdmi;
 import ec.edu.espe.megasoft.vista.MenuCliente;
@@ -32,6 +33,7 @@ import java.util.Scanner;
         private static final String ARCHIVO_DATOS = "datos_tienda.json";
         private MenuCliente menuCliente;
         private MenuAdmi menuAdmi;
+        
 
         public ControladorTienda(Tienda tienda, Menu menu) {
             this.tienda = tienda;
@@ -39,6 +41,7 @@ import java.util.Scanner;
             this.scanner = new Scanner(System.in);
             menuCliente = new MenuCliente();
             menuAdmi = new MenuAdmi();
+            
 
         }
 
@@ -121,7 +124,6 @@ import java.util.Scanner;
     }
 
         private String enmascararContraseña() {
-        // Método para enmascarar la contraseña durante la entrada
         String contraseña = "";
         try {
             System.out.print("\033[8m"); // Oculta la entrada de texto
@@ -499,9 +501,11 @@ import java.util.Scanner;
     }
     return contraseña.toString();
 }
+      
+}
 
 
-    }
+    
 
     
     

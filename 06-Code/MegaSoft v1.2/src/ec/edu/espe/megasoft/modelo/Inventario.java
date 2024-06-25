@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  *
- * @author  Dev Dynasty, DCCO-ESPE
+ * @author Dev Dynasty, DCCO-ESPE
  */
 public class Inventario {
     

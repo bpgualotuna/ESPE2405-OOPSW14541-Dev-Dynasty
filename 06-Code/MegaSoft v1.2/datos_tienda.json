@@ -1,9 +1,33 @@
 {
-  "usuarios": [
+  "productos": [
     {
-      "nombreUsuario": "2",
-      "contraseña": "admin",
-      "esAdmin": false
+      "id": 6819,
+      "nombre": "a1",
+      "precio": 1.0,
+      "categoria": {
+        "nombre": "c",
+        "descripcion": "Descripción de c"
+      },
+      "stock": 0
+    },
+    {
+      "id": 9244,
+      "nombre": "c",
+      "precio": 5.0,
+      "categoria": {
+        "nombre": "d",
+        "descripcion": "Descripción de d"
+      },
+      "stock": 0
+    }
+  ],
+  "reseñas": [],
+  "ofertas": [
+    {
+      "descripcion": "ef",
+      "descuento": 1.2,
+      "stock": 0,
+      "id": 0
     }
   ]
 }

@@ -6,12 +6,9 @@ package ec.edu.espe.megasoft.modelo;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import ec.edu.espe.megasoft.modelo.Tienda;
 import ec.edu.espe.megasoft.util.ArchivoJson;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -36,10 +33,12 @@ import java.util.Map;
     private DatosTienda datosTienda;
     private static final String ARCHIVO_DATOS = "datos_tienda.json";
     private static final String ARCHIVO_USUARIOS = "usuarios.json";
+    private final ArchivoJson jsonFileHandler;
 
     // Resto de variables y constantes
 
     public Tienda() throws IOException {
+        this.jsonFileHandler = new ArchivoJson();
         this.productos = new ArrayList<>();
         this.ofertas = new ArrayList<>();
         this.reseñas = new ArrayList<>();
@@ -47,6 +46,14 @@ import java.util.Map;
         this.usuarios = new ArrayList<>();
         this.ventas = new ArrayList<>();
         this.usuariolista = new UsuarioLista(new ArrayList<>());
+        this.datosTienda = new DatosTienda(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        if (!Files.exists(Paths.get(ARCHIVO_DATOS))) {
+            guardarDatosEnJson(); // Guarda datos iniciales vacíos
+        }
+            if (!Files.exists(Paths.get(ARCHIVO_USUARIOS))) {
+                      guardarUsuariosEnJson(ARCHIVO_USUARIOS); // Guarda datos iniciales vacíos de usuarios
+}
+
         //usuariolista.cargarUsuariosDesdeJson(ARCHIVO_USUARIOS);
         try {
             cargarDatosIniciales();
@@ -56,17 +63,18 @@ import java.util.Map;
         }
     }
 
-  private void cargarDatosIniciales() throws IOException {
-        cargarDesdeJson(ARCHIVO_DATOS);
-        cargarUsuariosDesdeJson(ARCHIVO_USUARIOS);
-    }
-
-
-   public void agregarProducto(Producto producto) {
+private void cargarDatosIniciales() throws IOException {
+    cargarDesdeJson(ARCHIVO_DATOS);
+    cargarUsuariosDesdeJson(ARCHIVO_USUARIOS);
+}
+    public void agregarProducto(Producto producto) {
+        if (this.productos == null) {
+            this.productos = new ArrayList<>();
+        }
         productos.add(producto);
-        guardarDatosEnJson(); // Guardar los datos actualizados en JSON
+        guardarDatosEnJson();
     }
-        
+
         public boolean eliminarProducto(int id) {
         boolean eliminado = productos.removeIf(producto -> producto.getId() == id);
         if (eliminado) {
@@ -85,6 +93,13 @@ import java.util.Map;
         }
         return false;
     }
+        
+         public void agregarVenta(Venta venta) {
+        ventas.add(venta);
+        guardarDatosEnJson();
+    }
+         
+         
         public Producto buscarProducto(int id) {
             for (Producto producto : productos) {
                 if (producto.getId() == id) {
@@ -105,6 +120,8 @@ import java.util.Map;
         public List<Oferta> getOfertas() {
             return ofertas;
         }
+        
+       
 
         public void agregarReseña(Reseña reseña) {
             reseñas.add(reseña);
@@ -121,6 +138,8 @@ import java.util.Map;
         public void agregarUsuario(Usuario usuario) {
             usuarios.add(usuario);
         }
+        
+        
 
         
 public Usuario autenticarUsuario(String nombreUsuario, String contrasena) {
@@ -139,47 +158,70 @@ public Usuario autenticarUsuario(String nombreUsuario, String contrasena) {
         
         
        
-   public void guardarUsuariosEnJson(String filePath) {
-        try {
-            ArchivoJson jsonFileHandler = new ArchivoJson();
-            UsuarioLista.UsuarioListWrapper wrapper = new UsuarioLista.UsuarioListWrapper();
-            wrapper.setUsuarios(this.usuarios);
-            jsonFileHandler.guardarEnJson(wrapper, filePath);
-            System.out.println("Usuarios guardados correctamente en \n" + filePath);
-        } catch (IOException e) {
-            System.out.println("Error al guardar usuarios en " + filePath + ": " + e.getMessage());
-            e.printStackTrace();
-        }
+   public synchronized void guardarUsuariosEnJson(String filePath) {
+    try {
+        jsonFileHandler.guardarEnJson(new UsuarioLista(this.usuarios), filePath);
+        System.out.println("Usuarios guardados correctamente en " + filePath);
+    } catch (IOException e) {
+        System.out.println("Error al guardar usuarios en " + filePath + ": " + e.getMessage());
     }
+}
        
-   private void cargarUsuariosDesdeJson(String rutaArchivo) throws IOException {
+  private void cargarUsuariosDesdeJson(String rutaArchivo) {
+    try {
         ArchivoJson jsonFileHandler = new ArchivoJson();
         UsuarioLista usuarioLista = jsonFileHandler.cargarDesdeJson(rutaArchivo, UsuarioLista.class);
         if (usuarioLista != null) {
             this.usuarios = usuarioLista.getUsuarios();
-            this.usuariolista = usuarioLista; // Asigna el objeto completo de UsuarioLista
+            this.usuariolista = usuarioLista;
+        } else {
+            this.usuarios = new ArrayList<>();
         }
+    } catch (IOException e) {
+        System.out.println("Error al cargar usuarios desde JSON: " + e.getMessage());
+        this.usuarios = new ArrayList<>();
     }
+}
    
-   public void guardarDatosEnJson() {
-        try {
-            ArchivoJson jsonFileHandler = new ArchivoJson();
-            jsonFileHandler.guardarEnJson(datosTienda, ARCHIVO_DATOS);
-            jsonFileHandler.guardarEnJson(new UsuarioLista(datosTienda.getUsuarios()), ARCHIVO_USUARIOS);
-            System.out.println("Datos guardados correctamente en JSON.");
-        } catch (IOException e) {
-            System.out.println("Error al guardar los datos en JSON: " + e.getMessage());
-            e.printStackTrace();
-        }
+ public synchronized void guardarDatosEnJson() {
+    try {
+        datosTienda.setProductos(this.productos);
+        datosTienda.setOfertas(this.ofertas);
+        datosTienda.setReseñas(this.reseñas);
+        datosTienda.setUsuarios(this.usuarios);
+
+        jsonFileHandler.guardarEnJson(datosTienda, ARCHIVO_DATOS);
+        jsonFileHandler.guardarEnJson(new UsuarioLista(datosTienda.getUsuarios()), ARCHIVO_USUARIOS);
+
+        System.out.println("Datos guardados correctamente en JSON.");
+    } catch (IOException e) {
+        System.out.println("Error al guardar los datos en JSON: " + e.getMessage());
     }
+}
+
+   
  
-     private void cargarDesdeJson(String filePath) throws IOException {
+      private void cargarDesdeJson(String filePath) {
+    try {
         ArchivoJson jsonFileHandler = new ArchivoJson();
         datosTienda = jsonFileHandler.cargarDesdeJson(filePath, DatosTienda.class);
         if (datosTienda == null) {
-            datosTienda = new DatosTienda(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), usuarios);
+            datosTienda = new DatosTienda(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
         }
+
+        this.productos = datosTienda.getProductos() != null ? datosTienda.getProductos() : new ArrayList<>();
+        this.ofertas = datosTienda.getOfertas() != null ? datosTienda.getOfertas() : new ArrayList<>();
+        this.reseñas = datosTienda.getReseñas() != null ? datosTienda.getReseñas() : new ArrayList<>();
+        this.usuarios = datosTienda.getUsuarios() != null ? datosTienda.getUsuarios() : new ArrayList<>();
+    } catch (IOException e) {
+        System.out.println("Error al cargar datos desde JSON: " + e.getMessage());
+        this.productos = new ArrayList<>();
+        this.ofertas = new ArrayList<>();
+        this.reseñas = new ArrayList<>();
+        this.usuarios = new ArrayList<>();
     }
+}
+
 
 
      
@@ -213,38 +255,37 @@ public Usuario autenticarUsuario(String nombreUsuario, String contrasena) {
             return ventas;
         }
 
-        public void agregarVenta(Venta venta) {
-        ventas.add(venta);
-        guardarDatosEnJson(); // Guardar los datos actualizados en JSON después de agregar una venta
-    }
+    
 
         public boolean agregarStock(int idProducto, int cantidad) throws IOException {
-            Producto producto = obtenerProducto(idProducto);
-            if (producto != null) {
-                producto.setStock(producto.getStock() + cantidad);
-                guardarEnJson(usuarios, ARCHIVO_DATOS); // Guardar los cambios en el archivo JSON
-                return true;
-            }
-            return false;
+        Producto producto = obtenerProducto(idProducto);
+        if (producto != null) {
+            producto.setStock(producto.getStock() + cantidad);
+            guardarDatosEnJson();
+            return true;
         }
+        return false;
+    }
 
-        public boolean eliminarStock(int idProducto, int cantidad) {
-            Producto producto = obtenerProducto(idProducto);
-            if (producto != null && producto.getStock() >= cantidad) {
-                producto.setStock(producto.getStock() - cantidad);
-                return true;
-            }
-            return false;
+    public boolean eliminarStock(int idProducto, int cantidad) {
+        Producto producto = obtenerProducto(idProducto);
+        if (producto != null && producto.getStock() >= cantidad) {
+            producto.setStock(producto.getStock() - cantidad);
+            guardarDatosEnJson();
+            return true;
         }
+        return false;
+    }
 
-        public boolean editarStock(int idProducto, int nuevaCantidad) {
-            Producto producto = obtenerProducto(idProducto);
-            if (producto != null) {
-                producto.setStock(nuevaCantidad);
-                return true;
-            }
-            return false;
+    public boolean editarStock(int idProducto, int nuevaCantidad) {
+        Producto producto = obtenerProducto(idProducto);
+        if (producto != null) {
+            producto.setStock(nuevaCantidad);
+            guardarDatosEnJson();
+            return true;
         }
+        return false;
+    }
 
         public Producto obtenerProducto(int idProducto) {
             for (Producto producto : productos) {
@@ -289,7 +330,7 @@ public Usuario autenticarUsuario(String nombreUsuario, String contrasena) {
 //            System.out.println("No se compraron productos. Por favor, verifique el stock e intente nuevamente.");
 //        }
 //    }
-public void comprarProductos(String nombreUsuario, List<Integer> idsProductos) throws IOException {
+ public void comprarProductos(String nombreUsuario, List<Integer> idsProductos) throws IOException {
         double montoTotal = 0.0;
         List<Producto> productosComprados = new ArrayList<>();
         Map<Producto, Integer> cantidadesCompradas = new HashMap<>();
@@ -298,12 +339,10 @@ public void comprarProductos(String nombreUsuario, List<Integer> idsProductos) t
             Producto producto = obtenerProducto(idProducto);
             if (producto != null && producto.getStock() > 0) {
                 montoTotal += producto.getPrecio();
-                producto.setStock(producto.getStock() - 1); // Reduce el stock en 1 por cada compra
+                producto.setStock(producto.getStock() - 1);
 
-                // Actualiza la cantidad comprada de este producto
                 cantidadesCompradas.put(producto, cantidadesCompradas.getOrDefault(producto, 0) + 1);
 
-                // Solo agregar el producto una vez a la lista
                 if (!productosComprados.contains(producto)) {
                     productosComprados.add(producto);
                 }
@@ -313,13 +352,11 @@ public void comprarProductos(String nombreUsuario, List<Integer> idsProductos) t
         if (!productosComprados.isEmpty()) {
             Venta venta = new Venta(nombreUsuario, idsProductos);
             ventas.add(venta);
-            guardarEnJson(usuarios, "datos_tienda.json"); // Guardar datos después de la compra
+            guardarDatosEnJson();
 
-            // Calcular el IVA del 15%
             double iva = montoTotal * 0.15;
             double montoTotalConIva = montoTotal + iva;
 
-            // Imprimir la confirmación de la compra y los productos comprados en formato de tabla
             System.out.printf("Compra confirmada%n%-10s %-20s %-10s %-10s%n", "ID", "Nombre", "Precio", "Cantidad");
             System.out.println("---------------------------------------------------------------");
             for (Producto producto : productosComprados) {

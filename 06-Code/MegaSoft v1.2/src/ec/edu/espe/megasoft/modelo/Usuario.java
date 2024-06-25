@@ -6,7 +6,7 @@ package ec.edu.espe.megasoft.modelo;
 
 /**
  *
- * @author  Dev Dynasty, DCCO-ESPE
+ * @author Dev Dynasty, DCCO-ESPE
  */
 public class Usuario {
     private String nombreUsuario;
