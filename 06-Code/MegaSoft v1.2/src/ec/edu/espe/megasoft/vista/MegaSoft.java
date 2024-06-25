@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /** 
  *
- * @author Marco Chanataxi, Dev Dynasty, DCCO-ESPE
+ * @author Dev Dynasty, DCCO-ESPE
  */
 public class MegaSoft {
 

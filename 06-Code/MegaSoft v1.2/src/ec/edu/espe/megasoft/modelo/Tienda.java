@@ -23,7 +23,7 @@ import java.util.Map;
 
 /**
  *
- * @author Marco Chanataxi, Dev Dynasty, DCCO-ESPE
+ * @author Dev Dynasty, DCCO-ESPE
  */
     public class Tienda {
         private List<Producto> productos;
