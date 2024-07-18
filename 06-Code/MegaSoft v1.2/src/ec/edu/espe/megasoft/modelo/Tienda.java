@@ -304,32 +304,7 @@ public Usuario autenticarUsuario(String nombreUsuario, String contrasena) {
             return -1; // Valor de retorno predeterminado si el producto no se encuentra
         }
 
-//    public void comprarProductos(String nombreUsuario, List<Integer> idsProductos) throws IOException {
-//        double montoTotal = 0.0;
-//        List<Producto> productosComprados = new ArrayList<>();
-//
-//        for (int idProducto : idsProductos) {
-//            Producto producto = obtenerProducto(idProducto);
-//            if (producto != null && producto.getStock() > 0) {
-//                montoTotal += producto.getPrecio();
-//                producto.setStock(producto.getStock() - 1); // Reduce el stock en 1 por cada compra
-//                productosComprados.add(producto);
-//            }
-//        }
-//
-//        if (!productosComprados.isEmpty()) {
-//            Venta venta = new Venta(nombreUsuario, idsProductos);
-//            ventas.add(venta);
-//            guardarEnJson(usuarios, "datos_tienda.json"); // Guardar datos después de la compra
-//            System.out.println("Compra confirmada. Monto total: $" + montoTotal);
-//            System.out.println("Productos comprados:");
-//            for (Producto producto : productosComprados) {
-//                System.out.println(producto);
-//            }
-//        } else {
-//            System.out.println("No se compraron productos. Por favor, verifique el stock e intente nuevamente.");
-//        }
-//    }
+
  public void comprarProductos(String nombreUsuario, List<Integer> idsProductos) throws IOException {
         double montoTotal = 0.0;
         List<Producto> productosComprados = new ArrayList<>();
@@ -398,15 +373,7 @@ public Usuario autenticarUsuario(String nombreUsuario, String contrasena) {
         return false;
     }
 
-    // Método para verificar si un usuario existe
-//    public boolean existeUsuario(String nombreUsuario) {
-//        for (Usuario usuario : usuarios) {
-//            if (usuario.getNombreUsuario().equals(nombreUsuario)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }   
+  
     public boolean existeUsuario(String nombreUsuario) {
     if (this.usuarios == null) {
         this.usuarios = new ArrayList<>(); // Inicializa si es null
