@@ -13,7 +13,8 @@ public class Validator {
     public static boolean validatePassword(String password) {
         // Expresión regular para verificar que la contraseña tenga exactamente 8 caracteres
         // e incluya al menos una letra mayúscula, una letra minúscula, un número y un carácter especial
-        String regex = "^(?=.[A-Z])(?=.[a-z])(?=.\\d)(?=.[@$!%?&])[A-Za-z\\d@$!%?&]{8}$";
-        return password.matches(regex);
+        String regex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%?&])[A-Za-z\\d@$!%?&]{8}$";
+        boolean matches = password.matches(regex);
+        return matches;
     }
 }

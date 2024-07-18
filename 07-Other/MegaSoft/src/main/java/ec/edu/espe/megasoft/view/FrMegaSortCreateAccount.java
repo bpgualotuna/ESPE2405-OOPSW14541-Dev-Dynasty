@@ -167,8 +167,8 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
 
         // TODO add your handling code here:
         String password = txtContrasena.getText();
-        Validator.validatePassword(password);
-        if (validatePassword(password)) {
+        
+        if (Validator.validatePassword(password)) {
             // La contraseña es válida
             JOptionPane.showMessageDialog(this, "Contraseña válida. Iniciando sesión...");
             // Lógica para iniciar sesión
