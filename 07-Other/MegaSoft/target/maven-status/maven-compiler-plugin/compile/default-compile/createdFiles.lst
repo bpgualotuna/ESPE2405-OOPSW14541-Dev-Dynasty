@@ -11,6 +11,7 @@ ec\edu\espe\megasoft\view\FrmMegaSoft$5.class
 ec\edu\espe\megasoft\MegaSoft.class
 ec\edu\espe\megasoft\view\FrmMegaSoft$4.class
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginadmin$1.class
+utils\Validator.class
 ec\edu\espe\megasoft\view\FrmVerCarrito$1.class
 ec\edu\espe\megasoft\view\FrmMegasoftSplash$2.class
 ec\edu\espe\megasoft\view\FrmMegasoftSplash$1.class
@@ -26,6 +27,7 @@ ec\edu\espe\megasoft\view\FrmMegaSoftLoginadmin.class
 ec\edu\espe\megasoft\view\FrmMegasoftSplash.class
 ec\edu\espe\megasoft\view\FrMegaSortCreateAccount$4.class
 ec\edu\espe\megasoft\view\FrmMegaSoft$6.class
+ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer$6.class
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer$2.class
 ec\edu\espe\megasoft\view\FrmVerProductos.class
 ec\edu\espe\megasoft\view\FrmVerProductos$1.class

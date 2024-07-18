@@ -1,10 +1,13 @@
 package ec.edu.espe.megasoft.view;
 
+import javax.swing.JOptionPane;
+import utils.Validator;
+import static utils.Validator.validatePassword;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author DELL
@@ -33,8 +36,8 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtContrasena = new javax.swing.JTextField();
+        btnRegistrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
 
@@ -69,16 +72,16 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
 
         jLabel3.setText("Ingresa la contraseña:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtContrasenaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Continuar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
 
@@ -106,12 +109,12 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
+                    .addComponent(txtContrasena)
                     .addComponent(jTextField1))
                 .addGap(71, 71, 71))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(153, 153, 153)
-                .addComponent(jButton2)
+                .addComponent(btnRegistrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -124,13 +127,13 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
-                .addComponent(jButton2)
+                .addComponent(btnRegistrar)
                 .addGap(22, 22, 22))
         );
 
@@ -156,14 +159,24 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtContrasenaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        String password = txtContrasena.getText();
+        Validator.validatePassword(password);
+        if (validatePassword(password)) {
+            // La contraseña es válida
+            JOptionPane.showMessageDialog(this, "Contraseña válida. Iniciando sesión...");
+            // Lógica para iniciar sesión
+        } else {
+            // La contraseña no es válida
+            JOptionPane.showMessageDialog(this, "La contraseña debe tener exactamente 8 caracteres e incluir al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.");
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -206,7 +219,7 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -214,7 +227,7 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField txtContrasena;
     // End of variables declaration//GEN-END:variables
 }
