@@ -311,10 +311,64 @@ import java.util.Scanner;
                         agregarProducto();
                         break;
                     case 2:
-                        eliminarProducto();
+                        
+                        List<Integer> idProductos = new ArrayList<>();
+                        try{
+                            System.out.println("¿Desea Eliminar Un producto? (si/no): ");
+                            String confirmar = scanner.next();
+                            if(!confirmar.equalsIgnoreCase("si")){
+                                System.out.println("Eliminacion del producto cancelada");
+                                break;
+                            }
+                            boolean menuEliminar= false;
+                            while(!menuEliminar){
+                                System.out.println("--------------------------------------------------------------------  "); 
+                                System.out.println("             Menu de eliminacion:                     ");
+                                System.out.println("1. Eliminar productos");
+                                System.out.println("2. Eliminar productos por ID");
+                                System.out.println("3. Cancelar");
+                                System.out.println("--------------------------------------------------------------------  ");
+                                System.out.print("  Ingrese su elección: ");
+                                System.out.println("--------------------------------------------------------------------  ");
+                                int opcionEliminar = scanner.nextInt();
+                                scanner.nextLine(); // Consumir nueva línea
+                                switch(opcionEliminar){
+                                    case 1:
+                                        eliminarProducto();
+                                        break;
+                                    case 2:
+                                    if (idProductos.isEmpty()) {
+                                        System.out.println("No hay productos a Eliminar.");
+                                    } else {
+                                        System.out.print("Ingrese el ID del producto a Eliminar: ");
+                                        int idProductoEliminar = scanner.nextInt();
+                                        boolean eliminado = idProductos.removeIf(id -> id == idProductoEliminar);
+                                        if (eliminado) {
+                                            System.out.println("Producto Eliminado " );
+                                        } else {
+                                            System.out.println("Producto no encontrado.");
+                                        }
+                                    }
+                                    break;
+
+                                    case 3:
+                                        System.out.println("Eliminacion de productos Cancelada");
+                                        menuEliminar = true;
+                                        break;
+
+                                    default:
+                                        System.out.println("Opción inválida. Por favor, intente de nuevo.");
+                                        break;
+                                    }
+                                }
+                        }catch(Exception e){
+                            System.out.println("Error al eliminar productos" + e.getMessage());
+                        }
                         break;
+                        
                     case 3:
                         editarProducto();
+                        
                         break;
                     case 4:
                         buscarProducto();
