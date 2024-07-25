@@ -4,6 +4,7 @@
  */
 package ec.edu.espe.megasoft.controlador;
 
+import ec.edu.espe.megasoft.modelo.Categoria;
 import ec.edu.espe.megasoft.modelo.Oferta;
 import ec.edu.espe.megasoft.modelo.Producto;
 import ec.edu.espe.megasoft.modelo.Reseña;
@@ -18,6 +19,7 @@ import java.io.Console;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -433,12 +435,18 @@ import java.util.Scanner;
     guardarDatosTienda(); 
 }
 
-        private void agregarOferta() throws IOException {
-            Oferta oferta = (Oferta) menu.obtenerDatosOferta(); 
-            tienda.agregarOferta(oferta); 
-            menu.mostrarMensaje("Oferta agregada exitosamente.");
-            guardarDatosTienda(); 
-        }
+private void agregarOferta() throws IOException {
+    Oferta oferta = obtenerDatosOferta(); 
+    if (oferta != null) { // Verifica si la oferta no es null
+        tienda.agregarOferta(oferta); 
+        menu.mostrarMensaje("Oferta agregada exitosamente.");
+        guardarDatosTienda();
+    } else {
+        menu.mostrarMensaje("No se pudo agregar la oferta. Por favor, intente de nuevo.");
+    }
+}
+
+
 
         private void eliminarProducto() {
             int id = menu.obtenerIdProducto();
@@ -450,25 +458,43 @@ import java.util.Scanner;
             }
         }
 
-        private Oferta obtenerDatosOferta() {
-            menu.mostrarMensaje("Ingrese el nombre de la oferta:");
-            String nombre = scanner.nextLine();
-            
-            menu.mostrarMensaje("Ingrese el ID de la oferta");
-            int id = scanner.nextInt();
-            
-            menu.mostrarMensaje("Ingrese la categoria a la que pertenece el producto");
-            String categoria = scanner.nextLine();
-            
-            menu.mostrarMensaje("Ingrese el stock de la oferta: ");
-            int stock = scanner.nextInt();
+private Oferta obtenerDatosOferta() {
+    try {
+        menu.mostrarMensaje("Ingrese el nombre de la oferta:");
+        String nombre = scanner.nextLine();
+        
+        menu.mostrarMensaje("Ingrese el porcentaje de descuento:");
+        double descuento = scanner.nextDouble();
+        
+        scanner.nextLine();
 
-            menu.mostrarMensaje("Ingrese el porcentaje de descuento:");
-            double descuento = scanner.nextDouble();
-            scanner.nextLine(); 
+        menu.mostrarMensaje("Ingrese la categoría a la que pertenece el producto:");
+        String categoria = scanner.nextLine();
 
-            return new Oferta(nombre, descuento); // Suponiendo que el constructor de Oferta acepta un nombre y un descuento
-        }
+        menu.mostrarMensaje("Ingrese el stock de la oferta:");
+        int stock = scanner.nextInt();
+ 
+//        menu.mostrarMensaje("Ingrese la categoria:");
+//        String nombreCategoria = scanner.nextLine();
+        scanner.nextLine();
+        
+        menu.mostrarMensaje("Ingrese la descripcion:");
+        String descripcion = scanner.nextLine();
+        //String descripcion = scanner.nextLine();
+        
+        //scanner.nextLine(); // Consumir la nueva línea pendiente
+
+        //Categoria categorias = new Categoria(nombreCategoria,descripcionCategoria);
+        
+        // Suponiendo que el constructor de Oferta acepta nombre, categoría, stock y descuento
+        return new Oferta(nombre,descuento,categoria,stock,descripcion); 
+    } catch (InputMismatchException e) {
+        scanner.nextLine(); // Consumir la entrada incorrecta
+        menu.mostrarMensaje("Error: Entrada no válida. Inténtelo de nuevo.");
+        return null;
+    }
+}
+
 
         private void editarProducto() {
             int id = menu.obtenerIdProducto();
