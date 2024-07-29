@@ -10,6 +10,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import ec.edu.espe.megasoft.UserLogin;
 import java.util.List;
 import org.bson.Document;
@@ -31,6 +32,23 @@ public class ExportDB {
         insertOneData(dataOfUser, mongoCollection);
         return false;
     }
+    
+     public static boolean authenticateUser(String username, String password) {
+        String uri = "mongodb+srv://bpgualotuna1:bpgualotuna1@cluster0.elvwlgc.mongodb.net/";
+        MongoDatabase dataBase = openConnectionToMongo(uri);
+
+        String collection = "megaSoftClients";
+        MongoCollection<Document> mongoCollection = accessToCollections(dataBase, collection);
+
+        Document user = mongoCollection.find(Filters.eq("id", username)).first();
+
+        if (user != null) {
+            String storedPassword = user.getString("password");
+            return password.equals(storedPassword);
+        } else {
+            return false;
+        }
+    }
 
     //Abir conexión con mongoDB
     public static MongoDatabase openConnectionToMongo(String uri) {
@@ -39,6 +57,9 @@ public class ExportDB {
 
         return dataBase;
     }
+    
+    
+    
 
     //Acceso a colecciones
     public static MongoCollection<Document> accessToCollections(MongoDatabase dataBase, String collection) {
