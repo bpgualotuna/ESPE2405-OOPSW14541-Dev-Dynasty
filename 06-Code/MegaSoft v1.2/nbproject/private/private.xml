@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
-=======
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Documents/Espe/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/MegaSoft%20v1.2/src/ec/edu/espe/megasoft/vista/MenuCliente.java</file>
             <file>file:/C:/Users/DELL/Documents/Espe/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/MegaSoft%20v1.2/src/ec/edu/espe/megasoft/modelo/Producto.java</file>
-            <file>file:/C:/Users/DELL/Documents/Espe/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/MegaSoft%20v1.2/src/ec/edu/espe/megasoft/controlador/ControladorTienda.java</file>
             <file>file:/C:/Users/DELL/Documents/Espe/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/MegaSoft%20v1.2/src/ec/edu/espe/megasoft/modelo/Oferta.java</file>
-            <file>file:/C:/Users/DELL/Documents/Espe/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/MegaSoft%20v1.2/src/ec/edu/espe/megasoft/modelo/Categoria.java</file>
-            <file>file:/C:/Users/DELL/Documents/Espe/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/MegaSoft%20v1.2/src/ec/edu/espe/megasoft/modelo/Tienda.java</file>
-            <file>file:/C:/Users/DELL/Documents/Espe/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/MegaSoft%20v1.2/src/ec/edu/espe/megasoft/vista/Menu.java</file>
+            <file>file:/C:/Users/DELL/Documents/Espe/ESPE2405-OOPSW14541-Dev-Dynasty/06-Code/MegaSoft%20v1.2/src/ec/edu/espe/megasoft/modelo/Reseña.java</file>
         </group>
     </open-files>
->>>>>>> dca87fa1803d1185a0d8bf1f3d61c9330e5b6ab6
 </project-private>
