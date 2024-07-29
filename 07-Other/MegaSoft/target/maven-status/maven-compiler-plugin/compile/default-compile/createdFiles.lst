@@ -1,4 +1,5 @@
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginadmin$4.class
+utils\ExportDB.class
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer$5.class
 ec\edu\espe\megasoft\view\FrMegaSortCreateAccount$3.class
 ec\edu\espe\megasoft\view\FrmMegaSoft$2.class
@@ -17,6 +18,7 @@ ec\edu\espe\megasoft\view\FrmMegasoftSplash$2.class
 ec\edu\espe\megasoft\view\FrmMegasoftSplash$1.class
 ec\edu\espe\megasoft\view\FrmVerCarrito$2.class
 ec\edu\espe\megasoft\view\FrMegaSortCreateAccount$5.class
+ec\edu\espe\megasoft\UserLogin.class
 ec\edu\espe\megasoft\view\FrMegaSortCreateAccount$2.class
 ec\edu\espe\megasoft\view\FrmVerCarrito.class
 ec\edu\espe\megasoft\view\FrmHistoriaCompra$2.class
