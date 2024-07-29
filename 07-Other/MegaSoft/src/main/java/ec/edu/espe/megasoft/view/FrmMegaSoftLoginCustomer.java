@@ -4,6 +4,8 @@
  */
 package ec.edu.espe.megasoft.view;
 
+import utils.ExportDB;
+
 /**
  *
  * @author DELL
@@ -31,9 +33,9 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        btnInicioUsuario = new javax.swing.JButton();
+        txtUser = new javax.swing.JTextField();
+        txtContra = new javax.swing.JTextField();
+        btnIniciar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         brtCrearCuenta = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -47,22 +49,22 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
 
         jLabel3.setText("Contraseña:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtUserActionPerformed(evt);
             }
         });
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtContra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtContraActionPerformed(evt);
             }
         });
 
-        btnInicioUsuario.setText("Iniciar ");
-        btnInicioUsuario.addActionListener(new java.awt.event.ActionListener() {
+        btnIniciar.setText("Iniciar ");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicioUsuarioActionPerformed(evt);
+                btnIniciarActionPerformed(evt);
             }
         });
 
@@ -89,7 +91,7 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(157, 157, 157)
-                        .addComponent(btnInicioUsuario))
+                        .addComponent(btnIniciar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -97,8 +99,8 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(108, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -107,13 +109,13 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(btnInicioUsuario)
+                .addComponent(btnIniciar)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4)
                 .addGap(44, 44, 44)
@@ -169,26 +171,38 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtUserActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtContraActionPerformed
 
-    private void btnInicioUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioUsuarioActionPerformed
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
-        FrmMegaSoft frmMegaSoft = new FrmMegaSoft();
-        this.setVisible(false);
-        frmMegaSoft.setVisible(true);
-    }//GEN-LAST:event_btnInicioUsuarioActionPerformed
+
+        String user = txtUser.getText();
+        String password = txtContra.getText();
+
+        if (ExportDB.authenticateUser(user, password)) {
+            FrmMegaSoft frmMegaSoft = new FrmMegaSoft();
+            this.setVisible(false);
+            frmMegaSoft.setVisible(true);
+        }else{
+            FrmMegaSoft frmMegaSoft = new FrmMegaSoft();
+            this.setVisible(false);
+            frmMegaSoft.setVisible(true);
+        }
+
+
+    }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void brtCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brtCrearCuentaActionPerformed
-        FrMegaSortCreateAccount cuentanueva= new FrMegaSortCreateAccount();
+        FrMegaSortCreateAccount cuentanueva = new FrMegaSortCreateAccount();
         this.setVisible(false);
         cuentanueva.setVisible(true);
-        
+
     }//GEN-LAST:event_brtCrearCuentaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -236,7 +250,7 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton brtCrearCuenta;
-    private javax.swing.JButton btnInicioUsuario;
+    private javax.swing.JButton btnIniciar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -244,7 +258,7 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtContra;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
