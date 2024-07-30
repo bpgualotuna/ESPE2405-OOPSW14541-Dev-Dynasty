@@ -34,7 +34,12 @@ public class FrmMegaSoft extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         itmViewProducts = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         mnuAdmin = new javax.swing.JMenu();
+        mniAgregarProducto = new javax.swing.JMenuItem();
+        mniAgregarStock = new javax.swing.JMenuItem();
+        mniEliminarProducto = new javax.swing.JMenuItem();
+        mniEditarProducto = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 153, 255));
@@ -87,9 +92,45 @@ public class FrmMegaSoft extends javax.swing.JFrame {
         });
         mnuUser.add(jMenuItem2);
 
+        jMenuItem6.setText("Agregar Reseña");
+        mnuUser.add(jMenuItem6);
+
         jMenuBar1.add(mnuUser);
 
         mnuAdmin.setText("Administrador");
+
+        mniAgregarProducto.setText("Agregar Productos");
+        mniAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAgregarProductoActionPerformed(evt);
+            }
+        });
+        mnuAdmin.add(mniAgregarProducto);
+
+        mniAgregarStock.setText("Agregar Stock");
+        mniAgregarStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAgregarStockActionPerformed(evt);
+            }
+        });
+        mnuAdmin.add(mniAgregarStock);
+
+        mniEliminarProducto.setText("Eliminar Producto");
+        mniEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEliminarProductoActionPerformed(evt);
+            }
+        });
+        mnuAdmin.add(mniEliminarProducto);
+
+        mniEditarProducto.setText("Editar Producto");
+        mniEditarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniEditarProductoActionPerformed(evt);
+            }
+        });
+        mnuAdmin.add(mniEditarProducto);
+
         jMenuBar1.add(mnuAdmin);
 
         setJMenuBar(jMenuBar1);
@@ -141,6 +182,34 @@ public class FrmMegaSoft extends javax.swing.JFrame {
         frmVerCarrito.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void mniAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarProductoActionPerformed
+        // TODO add your handling code here:
+        FrmAgregarProductos frmAgregarProductos = new FrmAgregarProductos();
+        this.setVisible(false);
+        frmAgregarProductos.setVisible(true);
+    }//GEN-LAST:event_mniAgregarProductoActionPerformed
+
+    private void mniAgregarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarStockActionPerformed
+        // TODO add your handling code here:
+        FrmAgregarStock frmAgregarStock = new FrmAgregarStock();
+        this.setVisible(false);
+        frmAgregarStock.setVisible(true);
+    }//GEN-LAST:event_mniAgregarStockActionPerformed
+
+    private void mniEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarProductoActionPerformed
+        // TODO add your handling code here:
+        FrmEliminarProducto frmEliminarProducto = new FrmEliminarProducto();
+        this.setVisible(false);
+        frmEliminarProducto.setVisible(true);
+    }//GEN-LAST:event_mniEliminarProductoActionPerformed
+
+    private void mniEditarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEditarProductoActionPerformed
+        // TODO add your handling code here:
+        FrmEditarProducto frmEditarProducto = new FrmEditarProducto();
+        this.setVisible(false);
+        frmEditarProducto.setVisible(true);
+    }//GEN-LAST:event_mniEditarProductoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -186,6 +255,11 @@ public class FrmMegaSoft extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem mniAgregarProducto;
+    private javax.swing.JMenuItem mniAgregarStock;
+    private javax.swing.JMenuItem mniEditarProducto;
+    private javax.swing.JMenuItem mniEliminarProducto;
     private javax.swing.JMenu mnuAdmin;
     private javax.swing.JMenu mnuMegaSoft;
     private javax.swing.JMenu mnuUser;
