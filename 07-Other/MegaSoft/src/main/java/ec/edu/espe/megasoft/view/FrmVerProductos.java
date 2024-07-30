@@ -112,7 +112,7 @@ public class FrmVerProductos extends javax.swing.JFrame {
 
     private void btnMegaSoftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMegaSoftActionPerformed
         // TODO add your handling code here:
-        FrmMegaSoft frmMegaSoft = new FrmMegaSoft();
+        FrmMegaSoftcustomer frmMegaSoft = new FrmMegaSoftcustomer();
         this.setVisible(false);
         frmMegaSoft.setVisible(true);
     }//GEN-LAST:event_btnMegaSoftActionPerformed

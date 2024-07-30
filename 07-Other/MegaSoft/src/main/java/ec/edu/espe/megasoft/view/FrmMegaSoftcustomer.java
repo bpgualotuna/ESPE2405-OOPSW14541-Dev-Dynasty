@@ -6,14 +6,14 @@ package ec.edu.espe.megasoft.view;
 
 /**
  *
- * @author Brayan Gualotuña, Dev Dynasty, DCCO-ESPE
+ * @author DELL
  */
-public class FrmMegaSoft extends javax.swing.JFrame {
+public class FrmMegaSoftcustomer extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmMegaSoftSplash
+     * Creates new form FrmMegaSoftcustomer
      */
-    public FrmMegaSoft() {
+    public FrmMegaSoftcustomer() {
         initComponents();
     }
 
@@ -26,26 +26,27 @@ public class FrmMegaSoft extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuMegaSoft = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        mniAgregarProducto = new javax.swing.JMenuItem();
-        mniEliminarProducto = new javax.swing.JMenuItem();
-        mniEditarProducto = new javax.swing.JMenuItem();
         itmViewProducts = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        mnuAdmin = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        mnuUser = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+
+        jMenuItem7.setText("jMenuItem7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(51, 153, 255));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setForeground(new java.awt.Color(102, 153, 255));
 
         mnuMegaSoft.setText("MegaSoft");
 
@@ -69,30 +70,6 @@ public class FrmMegaSoft extends javax.swing.JFrame {
 
         jMenu1.setText("Productos");
 
-        mniAgregarProducto.setText("Agregar Productos");
-        mniAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniAgregarProductoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mniAgregarProducto);
-
-        mniEliminarProducto.setText("Eliminar Producto");
-        mniEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniEliminarProductoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mniEliminarProducto);
-
-        mniEditarProducto.setText("Editar Producto");
-        mniEditarProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniEditarProductoActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mniEditarProducto);
-
         itmViewProducts.setText("Ver Productos");
         itmViewProducts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,17 +78,25 @@ public class FrmMegaSoft extends javax.swing.JFrame {
         });
         jMenu1.add(itmViewProducts);
 
+        jMenuItem9.setText("Buscar Productos");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem9);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Ofertas");
 
-        jMenuItem1.setText("Añadir Ofertas");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem10.setText("Buscar Ofertas");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(jMenuItem10);
 
         jMenuItem5.setText("Ver Ofertas");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -123,25 +108,35 @@ public class FrmMegaSoft extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        mnuAdmin.setText("Administrador");
+        jMenu3.setText("Reseña");
 
-        jMenuItem2.setText("Historial de compra");
+        jMenuItem8.setText("Ver Reseña");
+        jMenu3.add(jMenuItem8);
+
+        jMenuItem6.setText("Agregar Reseña");
+        jMenu3.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu3);
+
+        mnuUser.setText("Usuario");
+
+        jMenuItem1.setText("Historial de Compra");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnuUser.add(jMenuItem1);
+
+        jMenuItem2.setText("Ver Carrito");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        mnuAdmin.add(jMenuItem2);
+        mnuUser.add(jMenuItem2);
 
-        jMenuItem6.setText("Ver Reseñas");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        mnuAdmin.add(jMenuItem6);
-
-        jMenuBar1.add(mnuAdmin);
+        jMenuBar1.add(mnuUser);
 
         setJMenuBar(jMenuBar1);
 
@@ -149,20 +144,15 @@ public class FrmMegaSoft extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 280, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
@@ -171,26 +161,18 @@ public class FrmMegaSoft extends javax.swing.JFrame {
         frmLogin.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void mniAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarProductoActionPerformed
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        FrmAgregarProductos frmAgregarProductos = new FrmAgregarProductos();
-        this.setVisible(false);
-        frmAgregarProductos.setVisible(true);
-    }//GEN-LAST:event_mniAgregarProductoActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void mniEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEliminarProductoActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        FrmEliminarProducto frmEliminarProducto = new FrmEliminarProducto();
+        FrmHistoriaCompra frmHistoriaCompra = new FrmHistoriaCompra();
         this.setVisible(false);
-        frmEliminarProducto.setVisible(true);
-    }//GEN-LAST:event_mniEliminarProductoActionPerformed
+        frmHistoriaCompra.setVisible(true);
 
-    private void mniEditarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniEditarProductoActionPerformed
-        // TODO add your handling code here:
-        FrmEditarProducto frmEditarProducto = new FrmEditarProducto();
-        this.setVisible(false);
-        frmEditarProducto.setVisible(true);
-    }//GEN-LAST:event_mniEditarProductoActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void itmViewProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmViewProductsActionPerformed
         // TODO add your handling code here:
@@ -199,21 +181,24 @@ public class FrmMegaSoft extends javax.swing.JFrame {
         frmVerProductos.setVisible(true);
     }//GEN-LAST:event_itmViewProductsActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        FrmVerCarrito frmVerCarrito = new FrmVerCarrito();
+        this.setVisible(false);
+        frmVerCarrito.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,23 +217,20 @@ public class FrmMegaSoft extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmMegaSoft.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMegaSoftcustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmMegaSoft.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMegaSoftcustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmMegaSoft.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMegaSoftcustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmMegaSoft.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMegaSoftcustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmMegaSoft().setVisible(true);
+                new FrmMegaSoftcustomer().setVisible(true);
             }
         });
     }
@@ -257,17 +239,19 @@ public class FrmMegaSoft extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmViewProducts;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem mniAgregarProducto;
-    private javax.swing.JMenuItem mniEditarProducto;
-    private javax.swing.JMenuItem mniEliminarProducto;
-    private javax.swing.JMenu mnuAdmin;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenu mnuMegaSoft;
+    private javax.swing.JMenu mnuUser;
     // End of variables declaration//GEN-END:variables
 }

@@ -122,7 +122,7 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
                 .addComponent(brtCrearCuenta))
         );
 
-        jButton1.setText("MegaSoft");
+        jButton1.setText("atrás");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -186,11 +186,11 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
         String password = txtContra.getText();
 
         if (ExportDB.authenticateUser(user, password)) {
-            FrmMegaSoft frmMegaSoft = new FrmMegaSoft();
+            FrmMegaSoftcustomer frmMegaSoft = new FrmMegaSoftcustomer();
             this.setVisible(false);
             frmMegaSoft.setVisible(true);
         }else{
-            FrmMegaSoft frmMegaSoft = new FrmMegaSoft();
+            FrmMegaSoftcustomer frmMegaSoft = new FrmMegaSoftcustomer();
             this.setVisible(false);
             frmMegaSoft.setVisible(true);
         }

@@ -17,7 +17,7 @@ import org.bson.Document;
 
 /**
  *
- * @author Brayan Gualotuña, Dev Dynasty, DCCO-ESPE
+ * @author  Dev Dynasty, DCCO-ESPE
  */
 public class ExportDB {
     public static boolean create(UserLogin user) {
