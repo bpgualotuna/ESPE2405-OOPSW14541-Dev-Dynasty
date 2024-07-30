@@ -35,17 +35,21 @@ public class ExportDB {
     
      public static boolean authenticateUser(String username, String password) {
         String uri = "mongodb+srv://bpgualotuna1:bpgualotuna1@cluster0.elvwlgc.mongodb.net/";
-        MongoDatabase dataBase = openConnectionToMongo(uri);
+        
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("oop"); 
+            MongoCollection<Document> collection = database.getCollection("megaSoftClients"); 
 
-        String collection = "megaSoftClients";
-        MongoCollection<Document> mongoCollection = accessToCollections(dataBase, collection);
+            Document user = collection.find(Filters.eq("id", username)).first();
 
-        Document user = mongoCollection.find(Filters.eq("id", username)).first();
-
-        if (user != null) {
-            String storedPassword = user.getString("password");
-            return password.equals(storedPassword);
-        } else {
+            if (user != null) {
+                String storedPassword = user.getString("password");
+                return password.equals(storedPassword);
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.err.println("An error occurred while authenticating the user: " + e.getMessage());
             return false;
         }
     }

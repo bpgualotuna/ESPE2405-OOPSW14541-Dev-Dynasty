@@ -186,13 +186,12 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
         String password = txtContra.getText();
 
         if (ExportDB.authenticateUser(user, password)) {
+            System.out.println("Authentication successful.");
             FrmMegaSoftcustomer frmMegaSoft = new FrmMegaSoftcustomer();
             this.setVisible(false);
             frmMegaSoft.setVisible(true);
         }else{
-            FrmMegaSoftcustomer frmMegaSoft = new FrmMegaSoftcustomer();
-            this.setVisible(false);
-            frmMegaSoft.setVisible(true);
+            System.out.println("Authentication failed. Please check your username and password.");
         }
 
 
