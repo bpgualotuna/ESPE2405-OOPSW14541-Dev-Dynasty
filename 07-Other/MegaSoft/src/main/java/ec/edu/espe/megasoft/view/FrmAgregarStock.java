@@ -15,6 +15,7 @@ public class FrmAgregarStock extends javax.swing.JFrame {
      */
     public FrmAgregarStock() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

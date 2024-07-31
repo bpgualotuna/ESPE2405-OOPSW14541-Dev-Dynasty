@@ -9,12 +9,12 @@ package ec.edu.espe.megasoft;
  * @author Brayan Gualotuña, Dev Dynasty, DCCO-ESPE
  */
 public class Products {
-    private String id;
+    private int id;
     private String name;
-    private String price;
+    private double price;
     private int stock;
 
-    public Products(String id, String name, String price, int stock) {
+    public Products(int id, String name, double price, int stock) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -24,14 +24,14 @@ public class Products {
     /**
      * @return the id
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -52,14 +52,14 @@ public class Products {
     /**
      * @return the price
      */
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
     /**
      * @param price the price to set
      */
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -76,5 +76,5 @@ public class Products {
     public void setStock(int stock) {
         this.stock = stock;
     }
-    
+
 }

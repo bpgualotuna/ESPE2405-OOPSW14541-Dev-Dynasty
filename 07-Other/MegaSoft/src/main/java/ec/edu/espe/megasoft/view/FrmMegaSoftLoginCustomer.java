@@ -18,6 +18,7 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
      */
     public FrmMegaSoftLoginCustomer() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

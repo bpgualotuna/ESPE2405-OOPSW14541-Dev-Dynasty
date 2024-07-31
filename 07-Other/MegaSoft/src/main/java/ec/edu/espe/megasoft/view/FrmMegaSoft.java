@@ -15,6 +15,7 @@ public class FrmMegaSoft extends javax.swing.JFrame {
      */
     public FrmMegaSoft() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -18,6 +18,7 @@ public class FrmMegaSoftLoginadmin extends javax.swing.JFrame {
      */
     public FrmMegaSoftLoginadmin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

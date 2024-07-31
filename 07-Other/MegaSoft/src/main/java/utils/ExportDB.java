@@ -39,12 +39,12 @@ public class ExportDB {
         String uri = "mongodb+srv://bpgualotuna1:bpgualotuna1@cluster0.elvwlgc.mongodb.net/";
 
         MongoDatabase dataBase = openConnectionToMongo(uri);
-        Document dataOfUser = new Document().append("id", products.getName()).append("name",products.getName()).append("price", products.getPrice()).append("stock", products.getStock());
+        Document dataOfUser = new Document().append("id", products.getId()).append("name",products.getName()).append("price", products.getPrice()).append("stock", products.getStock());
 
         String collection = "megaSoftProducts";
         MongoCollection<Document> mongoCollection = accessToCollections(dataBase, collection);
         insertOneData(dataOfUser, mongoCollection);
-        return false;
+        return true;
     }
     
      public static boolean authenticateUser(String username, String password) {

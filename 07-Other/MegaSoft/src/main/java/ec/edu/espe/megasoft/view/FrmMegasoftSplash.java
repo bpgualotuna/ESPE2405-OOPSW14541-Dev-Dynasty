@@ -15,6 +15,7 @@ public class FrmMegasoftSplash extends javax.swing.JFrame {
      */
     public FrmMegasoftSplash() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
