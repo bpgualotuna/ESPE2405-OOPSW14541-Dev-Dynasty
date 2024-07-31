@@ -11,6 +11,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import ec.edu.espe.megasoft.Products;
 import ec.edu.espe.megasoft.UserLogin;
 import java.util.List;
 import org.bson.Document;
@@ -33,14 +34,14 @@ public class ExportDB {
         return false;
     }
     
-    public static boolean createProduct(UserLogin user) {
+    public static boolean createProduct(Products products) {
 
         String uri = "mongodb+srv://bpgualotuna1:bpgualotuna1@cluster0.elvwlgc.mongodb.net/";
 
         MongoDatabase dataBase = openConnectionToMongo(uri);
-        Document dataOfUser = new Document().append("id", user.getName()).append("password",user.getPassword());
+        Document dataOfUser = new Document().append("id", products.getName()).append("name",products.getName()).append("price", products.getPrice()).append("stock", products.getStock());
 
-        String collection = "megaSoftClients";
+        String collection = "megaSoftProducts";
         MongoCollection<Document> mongoCollection = accessToCollections(dataBase, collection);
         insertOneData(dataOfUser, mongoCollection);
         return false;

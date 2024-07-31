@@ -4,6 +4,7 @@
  */
 package ec.edu.espe.megasoft.view;
 
+import javax.swing.JOptionPane;
 import utils.ExportDB;
 
 /**
@@ -192,6 +193,7 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
             frmMegaSoft.setVisible(true);
         }else{
             System.out.println("Authentication failed. Please check your username and password.");
+            JOptionPane.showMessageDialog(null, "Contraseña o Usuario Incorrecto, Vuelva a intentarlo", "Acceso Denegado", HEIGHT);
         }
 
 

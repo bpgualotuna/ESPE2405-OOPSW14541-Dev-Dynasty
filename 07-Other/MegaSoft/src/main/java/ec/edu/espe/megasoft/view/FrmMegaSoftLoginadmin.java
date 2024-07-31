@@ -4,6 +4,9 @@
  */
 package ec.edu.espe.megasoft.view;
 
+import static java.awt.image.ImageObserver.HEIGHT;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DELL
@@ -196,9 +199,7 @@ public class FrmMegaSoftLoginadmin extends javax.swing.JFrame {
             this.setVisible(false);
             splash.setVisible(true);
         }else{
-            FrmMegasoftSplash splash = new FrmMegasoftSplash();
-            this.setVisible(false);
-            splash.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Contraseña o Usuario Incorrecto, Vuelva a intentarlo", "Acceso Denegado", HEIGHT);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
