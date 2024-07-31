@@ -5,10 +5,12 @@
 package ec.edu.espe.megasoft.view;
 
 import ec.edu.espe.megasoft.Products;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import utils.ExportDB;
 import javax.swing.table.DefaultTableModel;
+import org.bson.Document;
 
 /**
  *
@@ -38,7 +40,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         txtPrice = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDatos = new javax.swing.JTable();
         btnSave = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         txtStock = new javax.swing.JTextField();
@@ -84,20 +86,37 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "Id", "Nombre", "Precio", "Stock"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(50);
+        tblDatos.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                tblDatosComponentAdded(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDatos);
+        if (tblDatos.getColumnModel().getColumnCount() > 0) {
+            tblDatos.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tblDatos.getColumnModel().getColumn(0).setHeaderValue("Id");
+            tblDatos.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tblDatos.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+            tblDatos.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tblDatos.getColumnModel().getColumn(2).setHeaderValue("Precio");
+            tblDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tblDatos.getColumnModel().getColumn(3).setHeaderValue("Stock");
         }
 
         btnSave.setText("Guadar");
@@ -209,7 +228,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         Products product;
-        //int id =generarId();
+        //int id = generarId();
         String name = txtName.getText();
         double price = Double.parseDouble(txtPrice.getText());
         int stock = Integer.parseInt(txtStock.getText());
@@ -237,6 +256,13 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
         this.setVisible(false);
         frmSplash.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tblDatosComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tblDatosComponentAdded
+        // TODO add your handling code here:
+        List<Document> documents;
+        
+        
+    }//GEN-LAST:event_tblDatosComponentAdded
 
     /**
      * @param args the command line arguments
@@ -286,7 +312,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblDatos;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtStock;

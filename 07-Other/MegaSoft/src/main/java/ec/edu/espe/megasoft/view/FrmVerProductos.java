@@ -45,9 +45,6 @@ public class FrmVerProductos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnMegaSoft = new javax.swing.JButton();
-        txtName1 = new javax.swing.JTextField();
-        txtPrice1 = new javax.swing.JTextField();
-        txtStock1 = new javax.swing.JTextField();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -226,21 +223,6 @@ public class FrmVerProductos extends javax.swing.JFrame {
         });
         jPanel1.add(btnMegaSoft, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, -1, -1));
 
-        txtName1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtName1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
-
-        txtPrice1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrice1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
-        jPanel1.add(txtStock1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
-
         jLabel8.setText("ID");
 
         jLabel9.setText("Precio:");
@@ -301,6 +283,9 @@ public class FrmVerProductos extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(btnMegasoft1)
+                        .addGap(67, 67, 67))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -319,10 +304,7 @@ public class FrmVerProductos extends javax.swing.JFrame {
                                 .addComponent(btnSave1)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton5)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnMegasoft1)
-                        .addGap(67, 67, 67)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
                 .addGap(13, 13, 13))
         );
@@ -331,6 +313,9 @@ public class FrmVerProductos extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -349,9 +334,8 @@ public class FrmVerProductos extends javax.swing.JFrame {
                             .addComponent(btnSave1)
                             .addComponent(jButton5))
                         .addGap(29, 29, 29)
-                        .addComponent(btnMegasoft1))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnMegasoft1)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jTabbedPane2.addTab("Agregar Productos", jPanel4);
@@ -363,12 +347,13 @@ public class FrmVerProductos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -398,37 +383,12 @@ public class FrmVerProductos extends javax.swing.JFrame {
         frmSplash.setVisible(true);
     }//GEN-LAST:event_btnMegasoftActionPerformed
 
-    private void txtPrice1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrice1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrice1ActionPerformed
-
-    private void txtName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtName1ActionPerformed
-
     private void btnMegaSoftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMegaSoftActionPerformed
         // TODO add your handling code here:
         FrmMegaSoftcustomer frmMegaSoft = new FrmMegaSoftcustomer();
         this.setVisible(false);
         frmMegaSoft.setVisible(true);
     }//GEN-LAST:event_btnMegaSoftActionPerformed
-
-    private void txtName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtName2ActionPerformed
-
-    private void txtPrice2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrice2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrice2ActionPerformed
-
-    private void btnSave1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btnSave1StateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSave1StateChanged
-
-    private void btnSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave1ActionPerformed
-        // TODO add your handling code here:
- 
-    }//GEN-LAST:event_btnSave1ActionPerformed
 
     private void btnMegasoft1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMegasoft1ActionPerformed
         // TODO add your handling code here:
@@ -440,6 +400,23 @@ public class FrmVerProductos extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSave1ActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnSave1ActionPerformed
+
+    private void btnSave1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btnSave1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSave1StateChanged
+
+    private void txtPrice2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrice2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrice2ActionPerformed
+
+    private void txtName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtName2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -504,13 +481,10 @@ public class FrmVerProductos extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtName1;
     private javax.swing.JTextField txtName2;
     private javax.swing.JTextField txtPrice;
-    private javax.swing.JTextField txtPrice1;
     private javax.swing.JTextField txtPrice2;
     private javax.swing.JTextField txtStock;
-    private javax.swing.JTextField txtStock1;
     private javax.swing.JTextField txtStock2;
     // End of variables declaration//GEN-END:variables
 }
