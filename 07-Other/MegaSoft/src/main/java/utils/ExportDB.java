@@ -23,7 +23,7 @@ import org.bson.Document;
 public class ExportDB {
     public static boolean create(UserLogin user) {
 
-        String uri = "mongodb+srv://bpgualotuna1:bpgualotuna1@cluster0.elvwlgc.mongodb.net/";
+        String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
 
         MongoDatabase dataBase = openConnectionToMongo(uri);
         Document dataOfUser = new Document().append("id", user.getName()).append("password",user.getPassword());
@@ -36,7 +36,7 @@ public class ExportDB {
     
     public static boolean createProduct(Products products) {
 
-        String uri = "mongodb+srv://bpgualotuna1:bpgualotuna1@cluster0.elvwlgc.mongodb.net/";
+        String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
 
         MongoDatabase dataBase = openConnectionToMongo(uri);
         Document dataOfUser = new Document().append("id", products.getId()).append("name",products.getName()).append("price", products.getPrice()).append("stock", products.getStock());
@@ -48,10 +48,10 @@ public class ExportDB {
     }
     
      public static boolean authenticateUser(String username, String password) {
-        String uri = "mongodb+srv://bpgualotuna1:bpgualotuna1@cluster0.elvwlgc.mongodb.net/";
+        String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
         
         try (MongoClient mongoClient = MongoClients.create(uri)) {
-            MongoDatabase database = mongoClient.getDatabase("oop"); 
+            MongoDatabase database = mongoClient.getDatabase("OOP"); 
             MongoCollection<Document> collection = database.getCollection("megaSoftClients"); 
 
             Document user = collection.find(Filters.eq("id", username)).first();
@@ -71,7 +71,7 @@ public class ExportDB {
     //Abir conexión con mongoDB
     public static MongoDatabase openConnectionToMongo(String uri) {
         MongoClient mongoClient = MongoClients.create(uri);
-        MongoDatabase dataBase = mongoClient.getDatabase("oop");
+        MongoDatabase dataBase = mongoClient.getDatabase("OOP");
 
         return dataBase;
     }

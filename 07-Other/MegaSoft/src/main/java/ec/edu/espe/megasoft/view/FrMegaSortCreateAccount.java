@@ -75,6 +75,11 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
         jLabel3.setText("Ingresa la contraseña:");
 
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                btnRegistrarStateChanged(evt);
+            }
+        });
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -185,6 +190,10 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Contraseña válida. Iniciando sesión...");
             // Lógica para iniciar sesión
             
+            FrmMegaSoftcustomer frmMegaSoft = new FrmMegaSoftcustomer();
+            this.setVisible(false);
+            frmMegaSoft.setVisible(true);
+            
         } else {
             // La contraseña no es válida
             JOptionPane.showMessageDialog(this, "La contraseña es invalida.");
@@ -213,6 +222,10 @@ public class FrMegaSortCreateAccount extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_showPasswordCheckBoxActionPerformed
+
+    private void btnRegistrarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btnRegistrarStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarStateChanged
 
     /**
      * @param args the command line arguments

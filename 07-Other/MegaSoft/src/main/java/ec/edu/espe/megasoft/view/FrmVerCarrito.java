@@ -121,7 +121,7 @@ public class FrmVerCarrito extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FrmMegaSoft frmMegaSoft = new FrmMegaSoft();
+        FrmMegaSoftcustomer frmMegaSoft = new FrmMegaSoftcustomer();
         this.setVisible(false);
         frmMegaSoft.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
