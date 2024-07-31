@@ -33,6 +33,19 @@ public class ExportDB {
         return false;
     }
     
+    public static boolean createProduct(UserLogin user) {
+
+        String uri = "mongodb+srv://bpgualotuna1:bpgualotuna1@cluster0.elvwlgc.mongodb.net/";
+
+        MongoDatabase dataBase = openConnectionToMongo(uri);
+        Document dataOfUser = new Document().append("id", user.getName()).append("password",user.getPassword());
+
+        String collection = "megaSoftClients";
+        MongoCollection<Document> mongoCollection = accessToCollections(dataBase, collection);
+        insertOneData(dataOfUser, mongoCollection);
+        return false;
+    }
+    
      public static boolean authenticateUser(String username, String password) {
         String uri = "mongodb+srv://bpgualotuna1:bpgualotuna1@cluster0.elvwlgc.mongodb.net/";
         
