@@ -4,6 +4,11 @@
  */
 package ec.edu.espe.megasoft.view;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import org.bson.Document;
+import utils.ExportDB;
+
 /**
  *
  * @author Brayan Gualotuña, Dev Dynasty, DCCO-ESPE
@@ -15,6 +20,8 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
      */
     public FrmEliminarProducto() {
         initComponents();
+        updateTableOfMenus();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,7 +40,7 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tablaver = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
         btnMegasfot = new javax.swing.JButton();
@@ -41,7 +48,7 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 3, 18)); // NOI18N
-        jLabel3.setText("Eliminar Producto");
+        jLabel3.setText("Productos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -62,21 +69,34 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
 
         jLabel1.setText("Id: ");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tablaver.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
                 "Id", "Nombre", "Precio", "Stock"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(Tablaver);
 
         jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnNew.setText("Nuevo");
 
-        btnMegasfot.setText("MegaSotf");
+        btnMegasfot.setText("Volver");
         btnMegasfot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMegasfotActionPerformed(evt);
@@ -88,32 +108,29 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNew)
+                        .addGap(25, 25, 25))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 10, Short.MAX_VALUE)
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnNew)
-                                .addGap(37, 37, 37))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(btnMegasfot)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(btnMegasfot)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -126,6 +143,10 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnMegasfot)
                 .addGap(39, 39, 39))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Productos", jPanel2);
@@ -142,7 +163,7 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,6 +176,29 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
         frmSplash.setVisible(true);
     }//GEN-LAST:event_btnMegasfotActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+    public void updateTableOfMenus(){
+            List<Document> documents = ExportDB.getAllDocuments();
+
+            DefaultTableModel model = (DefaultTableModel) Tablaver.getModel();
+            model.setRowCount(0);
+
+        for (Document doc : documents) {
+               int id = doc.getInteger("id");
+               String name=doc.getString("name");
+               Double price=doc.getDouble("price");
+               int stock =doc.getInteger("stock");
+               
+                // Si necesitas convertir a float, hazlo aquí
+               //float priceFloat = (float) price;
+               
+
+    // Añade una fila al modelo con los valores
+    model.addRow(new Object[]{id, name,price,stock});
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -191,6 +235,7 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tablaver;
     private javax.swing.JButton btnMegasfot;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton jButton1;
@@ -200,7 +245,6 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

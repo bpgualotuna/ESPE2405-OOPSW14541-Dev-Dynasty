@@ -5,6 +5,7 @@
 package ec.edu.espe.megasoft.view;
 
 import ec.edu.espe.megasoft.Products;
+import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +24,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
     
     public FrmAgregarProductos() {
         initComponents();
+        updateTableOfMenus();
         this.setLocationRelativeTo(null);
     }
 
@@ -40,9 +42,9 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         txtPrice = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDatos = new javax.swing.JTable();
+        TablaProducto = new javax.swing.JTable();
         btnSave = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        botonnuevo = new javax.swing.JButton();
         txtStock = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
@@ -86,37 +88,29 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
             }
         });
 
-        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
+        TablaProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Id", "Nombre", "Precio", "Stock"
             }
         ));
-        tblDatos.addContainerListener(new java.awt.event.ContainerAdapter() {
+        TablaProducto.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
-                tblDatosComponentAdded(evt);
+                TablaProductoComponentAdded(evt);
             }
         });
-        jScrollPane1.setViewportView(tblDatos);
-        if (tblDatos.getColumnModel().getColumnCount() > 0) {
-            tblDatos.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblDatos.getColumnModel().getColumn(0).setHeaderValue("Id");
-            tblDatos.getColumnModel().getColumn(1).setPreferredWidth(100);
-            tblDatos.getColumnModel().getColumn(1).setHeaderValue("Nombre");
-            tblDatos.getColumnModel().getColumn(2).setPreferredWidth(50);
-            tblDatos.getColumnModel().getColumn(2).setHeaderValue("Precio");
-            tblDatos.getColumnModel().getColumn(3).setPreferredWidth(50);
-            tblDatos.getColumnModel().getColumn(3).setHeaderValue("Stock");
+        jScrollPane1.setViewportView(TablaProducto);
+        if (TablaProducto.getColumnModel().getColumnCount() > 0) {
+            TablaProducto.getColumnModel().getColumn(0).setPreferredWidth(50);
+            TablaProducto.getColumnModel().getColumn(0).setHeaderValue("Id");
+            TablaProducto.getColumnModel().getColumn(1).setPreferredWidth(100);
+            TablaProducto.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+            TablaProducto.getColumnModel().getColumn(2).setPreferredWidth(50);
+            TablaProducto.getColumnModel().getColumn(2).setHeaderValue("Precio");
+            TablaProducto.getColumnModel().getColumn(3).setPreferredWidth(50);
+            TablaProducto.getColumnModel().getColumn(3).setHeaderValue("Stock");
         }
 
         btnSave.setText("Guadar");
@@ -131,7 +125,12 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Nuevo");
+        botonnuevo.setText("Nuevo");
+        botonnuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonnuevoActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("MegaSoft");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +166,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
                                 .addGap(80, 80, 80)
                                 .addComponent(btnSave)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4)))
+                                .addComponent(botonnuevo)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -199,7 +198,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSave)
-                            .addComponent(jButton4))
+                            .addComponent(botonnuevo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(29, 29, 29))))
@@ -235,9 +234,37 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
         product = new Products(name, price, stock);
 
         ExportDB.createProduct(product);
+        
+        JOptionPane.showMessageDialog(rootPane,"Producto Agregado");
+        
+        // Actualizar la tabla
+        DefaultTableModel model = (DefaultTableModel) TablaProducto.getModel();
+        model.addRow(new Object[]{product.getId(), product.getName(), product.getPrice(), product.getStock()});
 
     }//GEN-LAST:event_btnSaveActionPerformed
+    public void updateTableOfMenus(){
+            List<Document> documents = ExportDB.getAllDocuments();
 
+            DefaultTableModel model = (DefaultTableModel) TablaProducto.getModel();
+            model.setRowCount(0);
+
+        for (Document doc : documents) {
+               int id = doc.getInteger("id");
+               String name=doc.getString("name");
+               Double price=doc.getDouble("price");
+               int stock =doc.getInteger("stock");
+               
+                // Si necesitas convertir a float, hazlo aquí
+               //float priceFloat = (float) price;
+               
+
+    // Añade una fila al modelo con los valores
+    model.addRow(new Object[]{id, name,price,stock});
+        }
+    }
+    
+
+    
     private void txtPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPriceActionPerformed
@@ -257,13 +284,21 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
         frmSplash.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void tblDatosComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tblDatosComponentAdded
+    private void TablaProductoComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_TablaProductoComponentAdded
         // TODO add your handling code here:
         List<Document> documents;
         
         
-    }//GEN-LAST:event_tblDatosComponentAdded
+    }//GEN-LAST:event_TablaProductoComponentAdded
 
+    private void botonnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonnuevoActionPerformed
+
+        txtName.setText("");
+        txtPrice.setText("");
+        txtStock.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonnuevoActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -300,10 +335,11 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaProducto;
+    private javax.swing.JButton botonnuevo;
     private javax.swing.JButton btnSave;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -312,7 +348,6 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tblDatos;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtStock;

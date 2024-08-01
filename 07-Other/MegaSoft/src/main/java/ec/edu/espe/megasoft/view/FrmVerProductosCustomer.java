@@ -8,12 +8,12 @@ package ec.edu.espe.megasoft.view;
  *
  * @author Brayan Gualotuña, Dev Dynasty, DCCO-ESPE
  */
-public class FrmVerProductos extends javax.swing.JFrame {
+public class FrmVerProductosCustomer extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmVerProductos
      */
-    public FrmVerProductos() {
+    public FrmVerProductosCustomer() {
         initComponents();
     }
 
@@ -435,20 +435,21 @@ public class FrmVerProductos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmVerProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVerProductosCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmVerProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVerProductosCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmVerProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVerProductosCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmVerProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVerProductosCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmVerProductos().setVisible(true);
+                new FrmVerProductosCustomer().setVisible(true);
             }
         });
     }

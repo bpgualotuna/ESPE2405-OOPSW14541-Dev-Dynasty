@@ -42,7 +42,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniEliminarProducto">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar Producto"/>
+                <Property name="text" type="java.lang.String" value="Ver Productos"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniEliminarProductoActionPerformed"/>
@@ -54,14 +54,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniEditarProductoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="itmViewProducts">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ver Productos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itmViewProductsActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

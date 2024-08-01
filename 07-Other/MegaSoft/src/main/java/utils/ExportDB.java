@@ -29,7 +29,7 @@ public class ExportDB {
         String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
 
         MongoDatabase dataBase = openConnectionToMongo(uri);
-        Document dataOfUser = new Document().append("id", user.getName()).append("password", user.getPassword());
+        Document dataOfUser = new Document().append("name", user.getName()).append("password", user.getPassword());
 
         String collection = "megaSoftClients";
         MongoCollection<Document> mongoCollection = accessToCollections(dataBase, collection);
@@ -82,7 +82,7 @@ public class ExportDB {
 
     
     //extraccion de documentos
-    public List<Document> getAllDocuments() {
+    public static List<Document> getAllDocuments() {
         String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
         MongoClient mongoClient = MongoClients.create(uri);
         MongoDatabase database = mongoClient.getDatabase("OOP");

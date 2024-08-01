@@ -20,6 +20,13 @@ public class Products {
         this.price = price;
         this.stock = stock;
     }
+    
+    public Products(int id, String name, double price, int stock) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
     private static int generarId() {
               // Implementa la lógica para generar un ID único para cada producto
         return (int) (Math.random() * 10000);

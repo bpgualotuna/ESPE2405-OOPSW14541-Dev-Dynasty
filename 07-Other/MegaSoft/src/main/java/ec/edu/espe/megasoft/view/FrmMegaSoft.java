@@ -35,7 +35,6 @@ public class FrmMegaSoft extends javax.swing.JFrame {
         mniAgregarProducto = new javax.swing.JMenuItem();
         mniEliminarProducto = new javax.swing.JMenuItem();
         mniEditarProducto = new javax.swing.JMenuItem();
-        itmViewProducts = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -78,7 +77,7 @@ public class FrmMegaSoft extends javax.swing.JFrame {
         });
         jMenu1.add(mniAgregarProducto);
 
-        mniEliminarProducto.setText("Eliminar Producto");
+        mniEliminarProducto.setText("Ver Productos");
         mniEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mniEliminarProductoActionPerformed(evt);
@@ -93,14 +92,6 @@ public class FrmMegaSoft extends javax.swing.JFrame {
             }
         });
         jMenu1.add(mniEditarProducto);
-
-        itmViewProducts.setText("Ver Productos");
-        itmViewProducts.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itmViewProductsActionPerformed(evt);
-            }
-        });
-        jMenu1.add(itmViewProducts);
 
         jMenuBar1.add(jMenu1);
 
@@ -193,17 +184,10 @@ public class FrmMegaSoft extends javax.swing.JFrame {
         frmEditarProducto.setVisible(true);
     }//GEN-LAST:event_mniEditarProductoActionPerformed
 
-    private void itmViewProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmViewProductsActionPerformed
-        // TODO add your handling code here:
-        FrmVerProductos frmVerProductos = new FrmVerProductos();
-        this.setVisible(false);
-        frmVerProductos.setVisible(true);
-    }//GEN-LAST:event_itmViewProductsActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         
-        FrmVerProductos frmVerProductos = new FrmVerProductos();
+        FrmVerProductosAdmin frmVerProductos = new FrmVerProductosAdmin();
         this.setVisible(false);
         frmVerProductos.setVisible(true);
         
@@ -260,7 +244,6 @@ public class FrmMegaSoft extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem itmViewProducts;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
