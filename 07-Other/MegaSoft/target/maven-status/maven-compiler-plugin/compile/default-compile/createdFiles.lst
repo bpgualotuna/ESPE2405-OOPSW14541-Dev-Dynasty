@@ -1,5 +1,6 @@
 ec\edu\espe\megasoft\view\FrmAgregarStock$3.class
 ec\edu\espe\megasoft\view\FrmAgregarProductos$8.class
+ec\edu\espe\megasoft\view\FrmEliminarProducto$5.class
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer$2.class
 ec\edu\espe\megasoft\view\FrmVerProductosCustomer$1.class
 ec\edu\espe\megasoft\view\FrmMegaSoftcustomer$8.class
@@ -53,7 +54,6 @@ ec\edu\espe\megasoft\view\FrmOfertas.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$4.class
 ec\edu\espe\megasoft\view\FrmVerProductosAdmin$3.class
 ec\edu\espe\megasoft\view\FrmVerProductosCustomer$6.class
-ec\edu\espe\megasoft\view\FrmVerProductosCustomer$13.class
 ec\edu\espe\megasoft\view\FrmEliminarProducto$4.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$11.class
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer$1.class

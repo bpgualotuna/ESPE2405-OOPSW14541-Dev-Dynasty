@@ -14,6 +14,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import ec.edu.espe.megasoft.Products;
 import ec.edu.espe.megasoft.UserLogin;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.Document;
@@ -145,4 +146,70 @@ public class ExportDB {
         Document findDocument = new Document("male", true);
         mongoCollection.findOneAndDelete(findDocument);
     }
+
+    
+    public static boolean deleteProductById(int id) {
+    String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
+    String databaseName = "OOP"; // Asegúrate de reemplazar esto con el nombre correcto de tu base de datos
+    String collectionName = "megaSoftProducts"; // Asegúrate de reemplazar esto con el nombre correcto de tu colección
+
+    try (MongoClient mongoClient = MongoClients.create(uri)) {
+        MongoDatabase database = mongoClient.getDatabase(databaseName);
+        MongoCollection<Document> collection = database.getCollection(collectionName);
+
+        Document query = new Document("id", id);
+        Document result = collection.findOneAndDelete(query);
+        return result != null;
+    } catch (Exception e) {
+        System.err.println("An error occurred while deleting the product: " + e.getMessage());
+        return false;
+    }
 }
+ public static boolean buyProductById(int id, int quantity) {
+    String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
+    String databaseName = "OOP"; // Reemplaza esto con el nombre correcto de tu base de datos
+    String collectionName = "megaSoftProducts"; // Reemplaza esto con el nombre correcto de tu colección
+
+    try (MongoClient mongoClient = MongoClients.create(uri)) {
+        MongoDatabase database = mongoClient.getDatabase(databaseName);
+        MongoCollection<Document> collection = database.getCollection(collectionName);
+
+        // Encuentra el producto por ID
+        Document query = new Document("id", id);
+        Document product = collection.find(query).first();
+
+        if (product != null) {
+            int currentStock = product.getInteger("stock");
+            if (currentStock >= quantity) {
+                int newStock = currentStock - quantity;
+                Document update = new Document("$set", new Document("stock", newStock));
+                collection.updateOne(query, update);
+                return true;
+            } else {
+                System.err.println("Not enough stock available.");
+                return false;
+            }
+        } else {
+            System.err.println("Product not found.");
+            return false;
+        }
+    } catch (Exception e) {
+        System.err.println("An error occurred while buying the product: " + e.getMessage());
+        return false;
+    }
+}
+        public static Document getProductById(int id) {
+        MongoCollection<Document> collection = getCollection("megaSoftProducts");
+        return collection.find(Filters.eq("id", id)).first();
+    }
+     private static MongoCollection<Document> getCollection(String collectionName) {
+        MongoDatabase database = openConnectionToMongo();
+        return database.getCollection(collectionName);
+    }
+         private static MongoDatabase openConnectionToMongo() {
+         String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
+        MongoClient mongoClient = MongoClients.create(uri);
+        return mongoClient.getDatabase("OOP");
+    }
+}
+

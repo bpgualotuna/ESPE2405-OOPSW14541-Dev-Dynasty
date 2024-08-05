@@ -5,6 +5,7 @@
 package ec.edu.espe.megasoft.view;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
 import utils.ExportDB;
@@ -38,10 +39,10 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TextId = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablaver = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        deletebutton = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
         btnMegasfot = new javax.swing.JButton();
 
@@ -69,6 +70,12 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
 
         jLabel1.setText("Id: ");
 
+        TextId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextIdActionPerformed(evt);
+            }
+        });
+
         Tablaver.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -87,10 +94,10 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tablaver);
 
-        jButton1.setText("Eliminar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        deletebutton.setText("Eliminar");
+        deletebutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                deletebuttonActionPerformed(evt);
             }
         });
 
@@ -108,23 +115,23 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 10, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(22, Short.MAX_VALUE)
+                        .addComponent(deletebutton)
                         .addGap(18, 18, 18)
                         .addComponent(btnNew)
                         .addGap(25, 25, 25))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(60, 60, 60)
+                                .addComponent(btnMegasfot))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(btnMegasfot)))
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TextId, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -132,14 +139,14 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addGap(90, 90, 90)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNew)
-                    .addComponent(jButton1))
+                    .addComponent(deletebutton))
                 .addGap(18, 18, 18)
                 .addComponent(btnMegasfot)
                 .addGap(39, 39, 39))
@@ -176,9 +183,36 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
         frmSplash.setVisible(true);
     }//GEN-LAST:event_btnMegasfotActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void deletebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebuttonActionPerformed
+    // Obtener el ID del campo de texto
+    int id;
+    try {
+        id = Integer.parseInt(TextId.getText());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingresa un ID válido.");
+        return;
+    }
+
+        // Llamar al método para eliminar el producto
+        boolean success = ExportDB.deleteProductById(id);
+
+        // Mostrar mensaje según el resultado
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Producto eliminado con éxito.");
+            updateTableOfMenus(); // Actualizar la tabla para reflejar los cambios
+        } else {
+            JOptionPane.showMessageDialog(this, "Producto no encontrado en la base de datos.");
+        }
+
+
+
+
+        
+    }//GEN-LAST:event_deletebuttonActionPerformed
+
+    private void TextIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextIdActionPerformed
+  
+    }//GEN-LAST:event_TextIdActionPerformed
     public void updateTableOfMenus(){
             List<Document> documents = ExportDB.getAllDocuments();
 
@@ -199,6 +233,9 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
     model.addRow(new Object[]{id, name,price,stock});
         }
     }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -236,15 +273,15 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tablaver;
+    private javax.swing.JTextField TextId;
     private javax.swing.JButton btnMegasfot;
     private javax.swing.JButton btnNew;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton deletebutton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
