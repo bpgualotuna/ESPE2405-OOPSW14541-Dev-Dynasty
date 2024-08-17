@@ -44,7 +44,7 @@ public class FrmMegasoftSplash extends javax.swing.JFrame {
                 btnInicioAdminActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInicioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
+        jPanel1.add(btnInicioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, -1, -1));
 
         btnInicioUsuario.setText("Iniciar Sesión como Usuario");
         btnInicioUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +52,7 @@ public class FrmMegasoftSplash extends javax.swing.JFrame {
                 btnInicioUsuarioActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInicioUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
+        jPanel1.add(btnInicioUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 210, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));

@@ -46,7 +46,11 @@ public class FrmMegaSoftcustomer extends javax.swing.JFrame {
         jMenuItem7.setText("jMenuItem7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
+
+        mnuMegaSoft.setBackground(new java.awt.Color(0, 0, 0));
         mnuMegaSoft.setText("MegaSoft");
 
         jMenuItem3.setText("Logout");

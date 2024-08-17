@@ -4,7 +4,7 @@
  */
 package ec.edu.espe.megasoft.view;
 
-import ec.edu.espe.megasoft.Products;
+import ec.edu.espe.megasoft.controller.Products;
 import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.JOptionPane;

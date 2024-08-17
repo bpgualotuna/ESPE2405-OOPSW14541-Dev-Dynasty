@@ -37,18 +37,26 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
         txtContra = new javax.swing.JTextField();
-        btnIniciar = new javax.swing.JButton();
+        btnEnter = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        brtCrearCuenta = new javax.swing.JButton();
-        btnAtras = new javax.swing.JButton();
+        brtCreateAcount = new javax.swing.JButton();
+        btnMegaSoft = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Inicio de sesión cliente");
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Usuario:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Contraseña:");
 
         txtUser.addActionListener(new java.awt.event.ActionListener() {
@@ -63,19 +71,29 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
             }
         });
 
-        btnIniciar.setText("Iniciar ");
-        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+        btnEnter.setBackground(new java.awt.Color(51, 153, 255));
+        btnEnter.setText("Ingresar");
+        btnEnter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciarActionPerformed(evt);
+                btnEnterActionPerformed(evt);
             }
         });
 
         jLabel4.setText("¿Eres nuevo en Megasoft?");
 
-        brtCrearCuenta.setText("Crear nueva cuenta");
-        brtCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
+        brtCreateAcount.setBackground(new java.awt.Color(51, 153, 255));
+        brtCreateAcount.setText("Crear nueva cuenta");
+        brtCreateAcount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brtCrearCuentaActionPerformed(evt);
+                brtCreateAcountActionPerformed(evt);
+            }
+        });
+
+        btnMegaSoft.setBackground(new java.awt.Color(51, 153, 255));
+        btnMegaSoft.setText("MegaSoft");
+        btnMegaSoft.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMegaSoftActionPerformed(evt);
             }
         });
 
@@ -83,53 +101,47 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(61, 61, 61)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEnter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(brtCrearCuenta))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(btnIniciar))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(108, Short.MAX_VALUE))
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(txtContra)))
+                    .addComponent(brtCreateAcount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMegaSoft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(btnIniciar)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
+                .addComponent(btnEnter)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(44, 44, 44)
-                .addComponent(brtCrearCuenta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(brtCreateAcount)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMegaSoft)
+                .addGap(19, 19, 19))
         );
-
-        btnAtras.setText("atrás");
-        btnAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtrasActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -137,24 +149,17 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAtras)
-                        .addContainerGap())))
+                .addContainerGap(101, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(btnAtras))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,7 +186,7 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraActionPerformed
 
-    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+    private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         // TODO add your handling code here:
 
         String user = txtUser.getText();
@@ -198,21 +203,21 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_btnIniciarActionPerformed
+    }//GEN-LAST:event_btnEnterActionPerformed
 
-    private void brtCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brtCrearCuentaActionPerformed
+    private void brtCreateAcountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brtCreateAcountActionPerformed
         FrMegaSortCreateAccount cuentanueva = new FrMegaSortCreateAccount();
         this.setVisible(false);
         cuentanueva.setVisible(true);
 
-    }//GEN-LAST:event_brtCrearCuentaActionPerformed
+    }//GEN-LAST:event_brtCreateAcountActionPerformed
 
-    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+    private void btnMegaSoftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMegaSoftActionPerformed
         // TODO add your handling code here:
         FrmMegasoftSplash splash = new FrmMegasoftSplash();
         this.setVisible(false);
         splash.setVisible(true);
-    }//GEN-LAST:event_btnAtrasActionPerformed
+    }//GEN-LAST:event_btnMegaSoftActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,9 +256,9 @@ public class FrmMegaSoftLoginCustomer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton brtCrearCuenta;
-    private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnIniciar;
+    private javax.swing.JButton brtCreateAcount;
+    private javax.swing.JButton btnEnter;
+    private javax.swing.JButton btnMegaSoft;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
