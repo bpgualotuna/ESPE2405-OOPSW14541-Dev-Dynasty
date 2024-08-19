@@ -18,13 +18,13 @@ public class ProductService {
         return ExportDB.buyProductById(id, quantity);
     }
 
-    public Products getProductById(int id) {
+    public Product getProductById(int id) {
         Document productDoc = ExportDB.getProductById(id);
         if (productDoc != null) {
             String name = productDoc.getString("name");
             double price = productDoc.getDouble("price");
             int stock = productDoc.getInteger("stock");
-            return new Products(id, name, price, stock);
+            return new Product(id, name, price, stock);
         }
         return null;
     }

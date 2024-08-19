@@ -28,7 +28,7 @@ public class ProductController {
             if (success) {
                 JOptionPane.showMessageDialog(null, "Compra realizada con éxito.");
 
-                Products product = productService.getProductById(id);
+                Product product = productService.getProductById(id);
                 if (product != null) {
                     // Actualizar la tabla con el nuevo stock
                     boolean productFound = false;
