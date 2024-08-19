@@ -12,7 +12,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-import ec.edu.espe.megasoft.controller.Products;
+import ec.edu.espe.megasoft.controller.Product;
 import ec.edu.espe.megasoft.controller.UserLogin;
 import java.net.URI;
 import java.util.ArrayList;
@@ -24,11 +24,10 @@ import org.bson.Document;
  * @author Dev Dynasty, DCCO-ESPE
  */
 public class ExportDB {
-
+    
+      static String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
+      
     public static boolean create(UserLogin user) {
-
-        String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
-
         MongoDatabase dataBase = openConnectionToMongo(uri);
         Document dataOfUser = new Document().append("name", user.getName()).append("password", user.getPassword());
 
@@ -38,9 +37,7 @@ public class ExportDB {
         return false;
     }
 
-    public static boolean createProduct(Products products) {
-
-        String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
+    public static boolean createProduct(Product products) {
 
         MongoDatabase dataBase = openConnectionToMongo(uri);
         Document dataOfUser = new Document().append("id", products.getId()).append("name", products.getName()).append("price", products.getPrice()).append("stock", products.getStock());
@@ -52,7 +49,6 @@ public class ExportDB {
     }
 
     public static boolean authenticateUser(String username, String password) {
-        String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
 
         try (MongoClient mongoClient = MongoClients.create(uri)) {
             MongoDatabase database = mongoClient.getDatabase("OOP");
@@ -84,7 +80,6 @@ public class ExportDB {
     
     //extraccion de documentos
     public static List<Document> getAllDocuments() {
-        String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
         MongoClient mongoClient = MongoClients.create(uri);
         MongoDatabase database = mongoClient.getDatabase("OOP");
         MongoCollection<Document> collection = database.getCollection("megaSoftProducts");
@@ -149,7 +144,7 @@ public class ExportDB {
 
     
     public static boolean deleteProductById(int id) {
-    String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
+    
     String databaseName = "OOP"; // Asegúrate de reemplazar esto con el nombre correcto de tu base de datos
     String collectionName = "megaSoftProducts"; // Asegúrate de reemplazar esto con el nombre correcto de tu colección
 
@@ -166,7 +161,7 @@ public class ExportDB {
     }
 }
  public static boolean buyProductById(int id, int quantity) {
-    String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
+    
     String databaseName = "OOP"; // Reemplaza esto con el nombre correcto de tu base de datos
     String collectionName = "megaSoftProducts"; // Reemplaza esto con el nombre correcto de tu colección
 

@@ -8,20 +8,20 @@ package ec.edu.espe.megasoft.controller;
  *
  * @author Brayan Gualotuña, Dev Dynasty, DCCO-ESPE
  */
-public class Products {
+public class Product {
     private int id;
     private String name;
     private double price;
     private int stock;
 
-    public Products( String name, double price, int stock) {
+    public Product( String name, double price, int stock) {
         this.id = generarId();
         this.name = name;
         this.price = price;
         this.stock = stock;
     }
     
-    public Products(int id, String name, double price, int stock) {
+    public Product(int id, String name, double price, int stock) {
         this.id = id;
         this.name = name;
         this.price = price;
