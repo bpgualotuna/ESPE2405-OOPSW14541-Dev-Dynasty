@@ -80,5 +80,8 @@ public class Products {
     public void setStock(int stock) {
         this.stock = stock;
     }
-
+    public static Products createProduct(String name, double price, int stock){
+        Products product = new Products(name, price, stock);
+        return product;
+    }
 }

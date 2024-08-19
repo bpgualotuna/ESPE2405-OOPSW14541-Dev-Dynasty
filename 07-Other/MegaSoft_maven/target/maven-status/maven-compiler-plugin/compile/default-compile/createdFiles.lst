@@ -1,6 +1,7 @@
 ec\edu\espe\megasoft\view\FrmAgregarStock$3.class
 ec\edu\espe\megasoft\view\VerProductosAdmin$3.class
 ec\edu\espe\megasoft\view\FrmVerProductos$6.class
+ec\edu\espe\megasoft\controller\MegaSoft.class
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer$2.class
 ec\edu\espe\megasoft\view\VerProductosAdmin.class
 ec\edu\espe\megasoft\view\FrmVerProductos$11.class
@@ -24,6 +25,7 @@ ec\edu\espe\megasoft\view\FrmOfertas$2.class
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer$4.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$7.class
 ec\edu\espe\megasoft\view\FrmVerProductos$4.class
+ec\edu\espe\megasoft\controller\UserLogin.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$3.class
 ec\edu\espe\megasoft\view\FrmMegaSoftcustomer$7.class
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer$3.class
@@ -31,6 +33,7 @@ ec\edu\espe\megasoft\view\FrmMegaSoftcustomer.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$6.class
 ec\edu\espe\megasoft\view\FrmMegaSoftcustomer$4.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$9.class
+ec\edu\espe\megasoft\view\FrmAgregarProductos$7.class
 ec\edu\espe\megasoft\view\FrmAgregarStock$2.class
 ec\edu\espe\megasoft\view\FrmVerProductos$5.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$10.class
@@ -43,6 +46,8 @@ ec\edu\espe\megasoft\view\VerProductosAdmin$2.class
 ec\edu\espe\megasoft\view\FrmOfertas.class
 ec\edu\espe\megasoft\view\FrmVerProductos$8.class
 ec\edu\espe\megasoft\view\FrmVerProductos$10.class
+ec\edu\espe\megasoft\controller\Products.class
+ec\edu\espe\megasoft\controller\CreateUser.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$4.class
 ec\edu\espe\megasoft\view\FrmVerProductos$7.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$11.class

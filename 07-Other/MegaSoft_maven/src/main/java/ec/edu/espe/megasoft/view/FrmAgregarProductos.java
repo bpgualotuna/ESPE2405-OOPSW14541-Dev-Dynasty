@@ -227,12 +227,8 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        Products product;
-        //int id = generarId();
-        String name = txtName.getText();
-        double price = Double.parseDouble(txtPrice.getText());
-        int stock = Integer.parseInt(txtStock.getText());
-        product = new Products(name, price, stock);
+        Products product = Products.createProduct(txtName.getText(), Double.parseDouble(txtPrice.getText()), Integer.parseInt(txtStock.getText()));
+       
 
         ExportDB.createProduct(product);
 
