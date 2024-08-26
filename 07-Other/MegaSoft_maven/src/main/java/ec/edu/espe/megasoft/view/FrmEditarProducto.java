@@ -86,6 +86,11 @@ public class FrmEditarProducto extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         btnUpdate.setText("Actualizar");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnMegasoft.setText("MegaSoft");
         btnMegasoft.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +205,10 @@ public class FrmEditarProducto extends javax.swing.JFrame {
         this.setVisible(false);
         frmSplash.setVisible(true);
     }//GEN-LAST:event_btnMegasoftActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments

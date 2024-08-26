@@ -50,6 +50,12 @@ public class FrmAgregarStock extends javax.swing.JFrame {
             }
         });
 
+        txtCantidadAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidadAgregarActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Agregar");
 
         jButton2.setText("Megasoft");
@@ -122,6 +128,10 @@ public class FrmAgregarStock extends javax.swing.JFrame {
         this.setVisible(false);
         frmMegasoft.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtCantidadAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidadAgregarActionPerformed
 
     /**
      * @param args the command line arguments

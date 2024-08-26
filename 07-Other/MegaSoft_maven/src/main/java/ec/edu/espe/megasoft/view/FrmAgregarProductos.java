@@ -42,7 +42,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
         btnSave = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
         txtStock = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnPdf = new javax.swing.JButton();
@@ -132,10 +132,10 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Nuevo");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnNuevoActionPerformed(evt);
             }
         });
 
@@ -176,7 +176,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(btnSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4)))
+                                .addComponent(btnNuevo)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPdf)))
                 .addGap(9, 9, 9)
@@ -205,7 +205,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSave)
-                            .addComponent(jButton4)
+                            .addComponent(btnNuevo)
                             .addComponent(btnPdf))
                         .addGap(26, 26, 26)
                         .addComponent(jButton1)))
@@ -267,9 +267,9 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tblDatosComponentAdded
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,11 +307,11 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnPdf;
     private javax.swing.JButton btnSave;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
