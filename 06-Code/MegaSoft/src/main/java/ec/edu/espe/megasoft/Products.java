@@ -1,5 +1,8 @@
-
-package ec.edu.espe.megasoft.controller;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ec.edu.espe.megasoft;
 
 /**
  *
@@ -13,13 +16,6 @@ public class Products {
 
     public Products( String name, double price, int stock) {
         this.id = generarId();
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
-    }
-    
-    public Products(int id, String name, double price, int stock) {
-        this.id = id;
         this.name = name;
         this.price = price;
         this.stock = stock;

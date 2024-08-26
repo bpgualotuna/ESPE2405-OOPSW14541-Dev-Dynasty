@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ec.edu.espe.megasoft.view;
 
 import ec.edu.espe.megasoft.controller.ProductController;
@@ -444,8 +441,6 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
 
         FrmHistorialCompra historialCompra = new FrmHistorialCompra();
         historialCompra.setVisible(true);
-
-        // Crear la instancia de InterfazProductos pasando la referencia de FrmHistorialCompra
         FrmVerProductosCustomer interfazProductos = new FrmVerProductosCustomer(historialCompra);
         interfazProductos.setVisible(true);
         /* Create and display the form */

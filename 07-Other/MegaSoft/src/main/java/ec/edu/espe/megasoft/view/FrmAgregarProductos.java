@@ -4,8 +4,12 @@
  */
 package ec.edu.espe.megasoft.view;
 
+<<<<<<< HEAD
 import ec.edu.espe.megasoft.controller.ProductService;
 import ec.edu.espe.megasoft.controller.Products;
+=======
+import ec.edu.espe.megasoft.controller.Product;
+>>>>>>> 0ec63deab0b5b8e2d8edd4bcc1a1cf1a45a80a90
 import java.awt.event.ActionEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -227,9 +231,19 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+<<<<<<< HEAD
         String name = txtName.getText();
         double price = Double.parseDouble(txtPrice.getText());
         int stock = Integer.parseInt(txtStock.getText());
+=======
+        // TODO add your handling code here:
+        Product product;
+        //int id = generarId();
+        String name = txtName.getText();
+        double price = Double.parseDouble(txtPrice.getText());
+        int stock = Integer.parseInt(txtStock.getText());
+        product = new Product(name, price, stock);
+>>>>>>> 0ec63deab0b5b8e2d8edd4bcc1a1cf1a45a80a90
 
         Products product = new Products(name, price, stock);
         ExportDB.createProduct(product);

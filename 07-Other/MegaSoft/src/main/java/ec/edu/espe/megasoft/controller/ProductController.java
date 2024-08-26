@@ -26,6 +26,7 @@ public class ProductController {
             for (int i = 0; i < rowCount; i++) {
                 int productId = (int) productTableModel.getValueAt(i, 0); 
 
+<<<<<<< HEAD
                 if (productId == id) {
                     String name = (String) productTableModel.getValueAt(i, 1); 
                     double price = (double) productTableModel.getValueAt(i, 2); 
@@ -37,6 +38,22 @@ public class ProductController {
                         historyTableModel.addRow(new Object[]{id, name, new java.util.Date(), quantity, total});
                     } else {
                         System.out.println("No hay suficiente stock para completar la compra.");
+=======
+            boolean success = productService.buyProductById(id, quantity);
+            if (success) {
+                JOptionPane.showMessageDialog(null, "Compra realizada con éxito.");
+
+                Product product = productService.getProductById(id);
+                if (product != null) {
+                    // Actualizar la tabla con el nuevo stock
+                    boolean productFound = false;
+                    for (int i = 0; i < tableModel.getRowCount(); i++) {
+                        if ((int) tableModel.getValueAt(i, 0) == product.getId()) {
+                            tableModel.setValueAt(product.getStock(), i, 3);
+                            productFound = true;
+                            break;
+                        }
+>>>>>>> 0ec63deab0b5b8e2d8edd4bcc1a1cf1a45a80a90
                     }
 
                     return;

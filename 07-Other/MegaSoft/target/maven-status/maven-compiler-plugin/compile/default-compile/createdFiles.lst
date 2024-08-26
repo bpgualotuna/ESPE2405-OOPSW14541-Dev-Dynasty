@@ -53,8 +53,8 @@ ec\edu\espe\megasoft\view\FrmMegaSoftcustomer$2.class
 ec\edu\espe\megasoft\view\FrmVerProductosAdmin.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$5.class
 ec\edu\espe\megasoft\view\FrmVerProductosCustomer$5.class
+ec\edu\espe\megasoft\controller\Product.class
 ec\edu\espe\megasoft\view\FrmOfertas.class
-ec\edu\espe\megasoft\controller\Products.class
 ec\edu\espe\megasoft\view\FrmAgregarOfertas$4.class
 ec\edu\espe\megasoft\view\FrmVerProductosCustomer$6.class
 ec\edu\espe\megasoft\view\FrmEliminarProducto$4.class
