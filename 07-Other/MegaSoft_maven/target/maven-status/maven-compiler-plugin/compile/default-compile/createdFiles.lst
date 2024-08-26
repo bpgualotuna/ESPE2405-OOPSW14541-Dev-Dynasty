@@ -1,5 +1,4 @@
 ec\edu\espe\megasoft\view\FrmAgregarStock$3.class
-ec\edu\espe\megasoft\view\VerProductosAdmin$3.class
 ec\edu\espe\megasoft\view\FrmVerProductos$6.class
 ec\edu\espe\megasoft\controller\MegaSoft.class
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer$2.class
@@ -19,7 +18,6 @@ ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer.class
 ec\edu\espe\megasoft\view\FrMegaSortCreateAccount$7.class
 ec\edu\espe\megasoft\view\FrmAgregarStock.class
 ec\edu\espe\megasoft\view\FrmMegaSoftcustomer$6.class
-ec\edu\espe\megasoft\view\VerProductosAdmin$4.class
 ec\edu\espe\megasoft\view\FrmVerProductos$12.class
 ec\edu\espe\megasoft\view\FrmOfertas$2.class
 ec\edu\espe\megasoft\view\FrmMegaSoftLoginCustomer$4.class
