@@ -4,6 +4,7 @@
  */
 package ec.edu.espe.megasoft.view;
 
+import ec.edu.espe.megasoft.controller.ProductService;
 import ec.edu.espe.megasoft.controller.Products;
 import java.awt.event.ActionEvent;
 import java.util.List;
@@ -24,8 +25,13 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
     
     public FrmAgregarProductos() {
         initComponents();
-        updateTableOfMenus();
         this.setLocationRelativeTo(null);
+        loadProductTable();
+    }
+    private void loadProductTable() {
+        ProductService productService = new ProductService();
+        DefaultTableModel model = (DefaultTableModel) TablaProducto.getModel();
+        productService.updateTableOfMenus(model);
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -50,7 +56,11 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Agregar Producto");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -113,6 +123,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
             TablaProducto.getColumnModel().getColumn(3).setHeaderValue("Stock");
         }
 
+        btnSave.setBackground(new java.awt.Color(51, 153, 255));
         btnSave.setText("Guadar");
         btnSave.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -125,6 +136,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
             }
         });
 
+        botonnuevo.setBackground(new java.awt.Color(51, 153, 255));
         botonnuevo.setText("Nuevo");
         botonnuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +144,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setText("MegaSoft");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,34 +157,25 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4))
-                                        .addGap(32, 32, 32)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(btnSave)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonnuevo)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(79, 79, 79)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(36, 36, 36)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonnuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
                 .addGap(13, 13, 13))
         );
         jPanel3Layout.setVerticalGroup(
@@ -179,9 +183,7 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -196,12 +198,12 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(58, 58, 58)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSave)
-                            .addComponent(botonnuevo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(29, 29, 29))))
+                        .addComponent(btnSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonnuevo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Agregar Productos", jPanel3);
@@ -225,45 +227,16 @@ public class FrmAgregarProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        Products product;
-        //int id = generarId();
         String name = txtName.getText();
         double price = Double.parseDouble(txtPrice.getText());
         int stock = Integer.parseInt(txtStock.getText());
-        product = new Products(name, price, stock);
 
+        Products product = new Products(name, price, stock);
         ExportDB.createProduct(product);
-        
-        JOptionPane.showMessageDialog(rootPane,"Producto Agregado");
-        
-        // Actualizar la tabla
-        DefaultTableModel model = (DefaultTableModel) TablaProducto.getModel();
-        model.addRow(new Object[]{product.getId(), product.getName(), product.getPrice(), product.getStock()});
 
+        JOptionPane.showMessageDialog(rootPane, "Producto Agregado");
+        loadProductTable();
     }//GEN-LAST:event_btnSaveActionPerformed
-    public void updateTableOfMenus(){
-            List<Document> documents = ExportDB.getAllDocuments();
-
-            DefaultTableModel model = (DefaultTableModel) TablaProducto.getModel();
-            model.setRowCount(0);
-
-        for (Document doc : documents) {
-               int id = doc.getInteger("id");
-               String name=doc.getString("name");
-               Double price=doc.getDouble("price");
-               int stock =doc.getInteger("stock");
-               
-                // Si necesitas convertir a float, hazlo aquí
-               //float priceFloat = (float) price;
-               
-
-    // Añade una fila al modelo con los valores
-    model.addRow(new Object[]{id, name,price,stock});
-        }
-    }
-    
-
     
     private void txtPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceActionPerformed
         // TODO add your handling code here:

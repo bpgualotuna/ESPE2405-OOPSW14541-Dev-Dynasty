@@ -4,6 +4,8 @@
  */
 package ec.edu.espe.megasoft.view;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Kenny Gavilanez, Dev Dynasty, DCCO-ESPE
@@ -189,4 +191,8 @@ public class FrmHistorialCompra extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblHistorial;
     // End of variables declaration//GEN-END:variables
+
+    DefaultTableModel getHistoryTableModel() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

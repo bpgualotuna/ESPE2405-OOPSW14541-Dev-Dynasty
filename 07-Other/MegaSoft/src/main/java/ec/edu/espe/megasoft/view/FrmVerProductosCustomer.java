@@ -6,6 +6,7 @@ package ec.edu.espe.megasoft.view;
 
 import ec.edu.espe.megasoft.controller.ProductController;
 import ec.edu.espe.megasoft.controller.ProductService;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrmVerProductosCustomer extends javax.swing.JFrame {
 
+    private FrmHistorialCompra historialCompra;
     /**
      * Creates new form FrmVerProductos
      */
@@ -23,8 +25,13 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
         ProductService productService = new ProductService();
         DefaultTableModel tableModel = (DefaultTableModel) tblProducts.getModel();
         productService.updateTableOfMenus(tableModel);
+        historialCompra = new FrmHistorialCompra();
     }
 
+    public FrmVerProductosCustomer(FrmHistorialCompra historialCompra) {
+        this.historialCompra = historialCompra;
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -385,15 +392,18 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
         ProductService productService = new ProductService();
         ProductController productController = new ProductController(productService);
-        DefaultTableModel tableModel = (DefaultTableModel) tblProducts.getModel();
 
-        // Actualizar la tabla de menús
-        productService.updateTableOfMenus(tableModel);
-
-        // Manejar la compra del producto
-        String idText = idField.getText();
-        String quantityText = quantityField.getText();
-        productController.handleBuyProduct(idText, quantityText, tableModel);
+        DefaultTableModel productTableModel = (DefaultTableModel) tblProducts.getModel();
+        
+        if (historialCompra != null){
+            DefaultTableModel historyTableModel = historialCompra.getHistoryTableModel();
+            String idText = idField.getText();
+            String quantityText = quantityField.getText();
+            productController.handleBuyProduct(idText, quantityText, productTableModel, historyTableModel);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Purchase history is not available. ", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnBuyActionPerformed
 
     private void btnBuyStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btnBuyStateChanged
@@ -432,6 +442,12 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
+        FrmHistorialCompra historialCompra = new FrmHistorialCompra();
+        historialCompra.setVisible(true);
+
+        // Crear la instancia de InterfazProductos pasando la referencia de FrmHistorialCompra
+        FrmVerProductosCustomer interfazProductos = new FrmVerProductosCustomer(historialCompra);
+        interfazProductos.setVisible(true);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
