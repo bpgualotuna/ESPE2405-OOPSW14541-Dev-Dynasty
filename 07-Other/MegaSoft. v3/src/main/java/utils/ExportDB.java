@@ -12,8 +12,10 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Sorts;
+import ec.edu.espe.megasoft.controller.Factura;
 import ec.edu.espe.megasoft.controller.Products;
-import ec.edu.espe.megasoft.controller.UserLogin;
+import ec.edu.espe.megasoft.model.UserLogin;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,7 @@ import org.bson.Document;
  * @author Dev Dynasty, DCCO-ESPE
  */
 public class ExportDB {
+    
 
     public static boolean create(UserLogin user) {
 
@@ -51,6 +54,9 @@ public class ExportDB {
         return true;
     }
 
+     // Variable estática para almacenar el nombre del usuario autenticado
+    private static String nombreUsuario;
+    
     public static boolean authenticateUser(String username, String password) {
         String uri = "mongodb+srv://mateolisintuna:CristianMateo@cluster0.vhefvyu.mongodb.net/";
 
@@ -62,7 +68,12 @@ public class ExportDB {
 
             if (user != null) {
                 String storedPassword = user.getString("password");
-                return password.equals(storedPassword);
+                
+                 // Guardar el nombre del usuario si la autenticación es exitosa
+                   nombreUsuario = user.getString("id");
+                   
+                 return password.equals(storedPassword);
+                
             } else {
                 return false;
             }
@@ -70,6 +81,10 @@ public class ExportDB {
             System.err.println("An error occurred while authenticating the user: " + e.getMessage());
             return false;
         }
+    }
+    
+      public static String obtenerCliente() {
+        return nombreUsuario;
     }
 
     //Abir conexión con mongoDB
@@ -211,5 +226,65 @@ public class ExportDB {
         MongoClient mongoClient = MongoClients.create(uri);
         return mongoClient.getDatabase("OOP");
     }
+         
+         
+         
+// metodos para la factura
+         
+       
+    // Método para obtener el último número de factura
+    public static String obtenerUltimoNumeroFactura() {
+        MongoCollection<Document> collection = getCollection("megaSoftFactura");
+
+        // Buscar el último documento ordenado por "numeroFactura" en orden descendente
+        Document lastInvoice = collection.find()
+            .sort(Sorts.descending("numeroFactura"))
+            .first();
+
+        // Si hay facturas existentes, devolver el último número, si no, devuelve "00000"
+        return (lastInvoice != null) ? lastInvoice.getString("numeroFactura") : "00000";
+    }
+
+    // Método para crear una nueva factura
+    public static boolean crearNuevaFactura(Factura factura) {
+        MongoCollection<Document> collection = getCollection("megaSoftFactura");
+
+        // Obtener el último número de factura y generar el siguiente
+        String ultimoNumero = obtenerUltimoNumeroFactura();
+        int siguienteNumero = Integer.parseInt(ultimoNumero) + 1;
+        String numeroFactura = String.format("%05d", siguienteNumero);
+        
+        factura.setNumeroFactura(numeroFactura); // Actualizar el número de factura en la factura actual
+
+        // Crear el documento de la factura
+        Document facturaDoc = new Document("numeroFactura", factura.getNumeroFactura())
+            .append("cliente", factura.getCliente())
+            .append("fecha", factura.getFecha().toString())
+            .append("productos", factura.getProductos())
+            .append("totalSinIVA", factura.getTotalSinIVA())
+            .append("totalConIVA", factura.getTotalConIVA());
+
+        // Insertar la factura en la colección
+        collection.insertOne(facturaDoc);
+        return true;
+    }
+
+    // Método para convertir un Document a un objeto Products
+public static Products documentToProduct(Document document) {
+    if (document == null) {
+        return null;
+    }
+
+    // Extraer los campos necesarios del documento
+    int id = document.getInteger("id", 0); // Ajusta el tipo de dato según tu base de datos
+    String name = document.getString("name");
+    double price = document.getDouble("price");
+    int stock = document.getInteger("stock", 0);
+
+    // Crear y retornar el objeto Products
+    return new Products(id, name, price, stock);
+
+
+}
 }
 

@@ -1,10 +1,20 @@
 
 package ec.edu.espe.megasoft.view;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
+import ec.edu.espe.megasoft.controller.Factura;
 import ec.edu.espe.megasoft.controller.ProductController;
 import ec.edu.espe.megasoft.controller.ProductService;
+import ec.edu.espe.megasoft.controller.ProductoSeleccionado;
+import ec.edu.espe.megasoft.controller.Products;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.bson.Document;
+import utils.ExportDB;
+import static utils.ExportDB.obtenerCliente;
 
 /**
  *
@@ -62,7 +72,7 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         idField = new javax.swing.JTextField();
         btnBuy = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
+        btnFactura = new javax.swing.JButton();
         btnMegasoft1 = new javax.swing.JButton();
         quantityField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -252,11 +262,11 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
             }
         });
 
-        btnCancel.setBackground(new java.awt.Color(51, 153, 255));
-        btnCancel.setText("Cancelar");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+        btnFactura.setBackground(new java.awt.Color(51, 153, 255));
+        btnFactura.setText("Factura");
+        btnFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
+                btnFacturaActionPerformed(evt);
             }
         });
 
@@ -291,7 +301,7 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuy, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
@@ -300,7 +310,7 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(idField, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                             .addComponent(quantityField)))
-                    .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnMegasoft1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
@@ -322,7 +332,7 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
                         .addGap(91, 91, 91)
                         .addComponent(btnBuy)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancel)
+                        .addComponent(btnFactura)
                         .addGap(18, 18, 18)
                         .addComponent(btnMegasoft1))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -345,6 +355,32 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    
+    
+    
+    // Lista para almacenar los productos seleccionados
+private List<ProductoSeleccionado> productosSeleccionados = new ArrayList<>();
+
+// Método para obtener y almacenar los productos seleccionados
+public List<ProductoSeleccionado> obtenerProductosSeleccionados() {
+    return productosSeleccionados;
+}
+
+// Método para convertir un Document a un objeto Products
+public static Products documentToProduct(Document document) {
+    if (document == null) {
+        return null;
+    }
+    int id = document.getInteger("id");
+    String name = document.getString("name");
+    double price = document.getDouble("price");
+    int stock = document.getInteger("stock");
+    
+    return new Products(id, name, price, stock);
+}
+// Método que retorna un Document basado en el ID del producto
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
@@ -382,25 +418,137 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
         frmSplash.setVisible(true);
     }//GEN-LAST:event_btnMegasoft1ActionPerformed
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelActionPerformed
+        // Obtener el último número de factura desde la base de datos
+    String ultimoNumeroFactura = ExportDB.obtenerUltimoNumeroFactura();
+    
+    String nuevoNumeroFactura;
+    if (ultimoNumeroFactura != null) {
+        int siguienteNumero = Integer.parseInt(ultimoNumeroFactura) + 1;
+        nuevoNumeroFactura = String.format("%05d", siguienteNumero);
+    } else {
+        nuevoNumeroFactura = "00001"; // Si no hay facturas, empezamos en 00001
+    }
+
+    // Crear la nueva factura con los datos actuales
+   // List<Products> productos = obtenerProductosSeleccionados();
+   
+   
+ // Método ficticio para obtener los productos
+    List<ProductoSeleccionado> productos = obtenerProductosSeleccionados();
+    
+    
+    
+    
+    String cliente = obtenerCliente(); // Método ficticio para obtener el cliente actual
+    
+    Factura nuevaFactura = new Factura(cliente, productos);
+    nuevaFactura.setNumeroFactura(nuevoNumeroFactura);
+    
+    
+
+    
+    // Guardar la nueva factura en la base de datos
+    boolean facturaCreada = ExportDB.crearNuevaFactura(nuevaFactura);
+
+    // Verificar si la factura se guardó correctamente
+    if (facturaCreada) {
+        JOptionPane.showMessageDialog(this, "Factura creada exitosamente con el número: " + nuevoNumeroFactura);
+        FrmFactura frmSplash = new FrmFactura ();
+        this.setVisible(false);
+        frmSplash.setVisible(true);
+    } else {
+        JOptionPane.showMessageDialog(this, "Hubo un error al crear la factura. Por favor, inténtelo nuevamente.");
+    }
+
+    }//GEN-LAST:event_btnFacturaActionPerformed
+
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
-        ProductService productService = new ProductService();
-        ProductController productController = new ProductController(productService);
+// Lista para almacenar los productos seleccionados
 
-        DefaultTableModel productTableModel = (DefaultTableModel) tblProducts.getModel();
-        
-        if (historialCompra != null){
-            DefaultTableModel historyTableModel = historialCompra.getHistoryTableModel();
-            String idText = idField.getText();
-            String quantityText = quantityField.getText();
-            productController.handleBuyProduct(idText, quantityText, productTableModel, historyTableModel);
+    List<ProductoSeleccionado> productosSeleccionados = new ArrayList<>();
+// Inicializar el servicio y el controlador de productos
+ProductService productService = new ProductService();
+ProductController productController = new ProductController(productService);
+
+// Obtener el modelo de la tabla de productos
+DefaultTableModel productTableModel = (DefaultTableModel) tblProducts.getModel();
+
+// Verificar si el historial de compras está disponible
+if (historialCompra != null) {
+    // Obtener el modelo de la tabla de historial de compras
+    DefaultTableModel historyTableModel = historialCompra.getHistoryTableModel();
+
+    // Obtener los valores de los campos de texto para ID y cantidad
+    String idText = idField.getText().trim();
+    String quantityText = quantityField.getText().trim();
+
+    // Validar que los campos no estén vacíos
+    if (idText.isEmpty() || quantityText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese un ID y una cantidad válidos.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    try {
+        // Convertir los valores a enteros
+        int id = Integer.parseInt(idText);
+        int quantity = Integer.parseInt(quantityText);
+
+        // Llamar al método que actualiza la base de datos
+        boolean success = ExportDB.buyProductById(id, quantity);
+
+        if (success) {
+            // Obtener el producto como Document desde la base de datos
+            Document productoDoc = ExportDB.getProductById(id);
+
+            // Verificar que el producto no sea nulo
+            if (productoDoc != null) {
+                // Convertir el Document a un objeto Products
+                Products producto = ExportDB.documentToProduct(productoDoc);
+
+                if (producto != null) {
+                    // Crear una instancia de ProductoSeleccionado con los detalles de la compra
+                    ProductoSeleccionado productoSeleccionado = new ProductoSeleccionado(
+                        producto.getId(),
+                        producto.getName(),
+                        producto.getPrice(),
+                        producto.getStock(),
+                        quantity
+                    );
+
+                    // Agregar el producto seleccionado a la lista
+                    productosSeleccionados.add(productoSeleccionado);
+
+                    // Actualizar la tabla de productos
+                    productController.handleBuyProduct(idText, quantityText, productTableModel, historyTableModel);
+
+                    // Mensaje de confirmación
+                    JOptionPane.showMessageDialog(this, "Producto añadido a la factura.");
+
+                    // Limpiar campos
+                    idField.setText("");
+                    quantityField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al convertir el producto.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Producto no encontrado en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Compra fallida. Verifique la disponibilidad del stock.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Purchase history is not available. ", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Entrada inválida para ID o cantidad. Asegúrese de ingresar números enteros.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+} else {
+    // Mostrar un mensaje de error si el historial de compras no está disponible
+    JOptionPane.showMessageDialog(this, "El historial de compras no está disponible.", "Error", JOptionPane.ERROR_MESSAGE);
+}
+
+
     }//GEN-LAST:event_btnBuyActionPerformed
 
     private void btnBuyStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btnBuyStateChanged
@@ -457,7 +605,7 @@ public class FrmVerProductosCustomer extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuy;
-    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnFactura;
     private javax.swing.JButton btnMegasoft;
     private javax.swing.JButton btnMegasoft1;
     private javax.swing.JButton btnSave;

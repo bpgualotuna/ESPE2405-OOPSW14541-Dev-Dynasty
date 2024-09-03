@@ -1,5 +1,5 @@
 
-package ec.edu.espe.megasoft.controller;
+package ec.edu.espe.megasoft.model;
 
 /**
  *

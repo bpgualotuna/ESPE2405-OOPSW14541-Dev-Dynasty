@@ -1,6 +1,6 @@
 package ec.edu.espe.megasoft.view;
 
-import ec.edu.espe.megasoft.controller.UserLogin;
+import ec.edu.espe.megasoft.model.UserLogin;
 import javax.swing.JOptionPane;
 import utils.ExportDB;
 import utils.Validator;

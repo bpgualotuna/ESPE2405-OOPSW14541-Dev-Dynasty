@@ -102,6 +102,11 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
         });
 
         btnNew.setText("Nuevo");
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
 
         btnMegasfot.setText("Volver");
         btnMegasfot.addActionListener(new java.awt.event.ActionListener() {
@@ -213,6 +218,12 @@ public class FrmEliminarProducto extends javax.swing.JFrame {
     private void TextIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextIdActionPerformed
   
     }//GEN-LAST:event_TextIdActionPerformed
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+           // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnNewActionPerformed
     public void updateTableOfMenus(){
             List<Document> documents = ExportDB.getAllDocuments();
 
