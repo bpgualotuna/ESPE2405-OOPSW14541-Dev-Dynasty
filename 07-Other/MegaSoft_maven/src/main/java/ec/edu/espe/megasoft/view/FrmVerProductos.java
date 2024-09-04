@@ -42,10 +42,6 @@ public class FrmVerProductos extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         btnMegasoft = new javax.swing.JButton();
         txtStock = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        btnMegaSoft = new javax.swing.JButton();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -58,6 +54,10 @@ public class FrmVerProductos extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         btnMegasoft1 = new javax.swing.JButton();
         txtStock2 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnMegaSoft = new javax.swing.JButton();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -206,23 +206,6 @@ public class FrmVerProductos extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setPreferredSize(new java.awt.Dimension(577, 498));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        jLabel1.setText("PRODUCTOS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
-
-        btnMegaSoft.setText("MegaSoft");
-        btnMegaSoft.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMegaSoftActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnMegaSoft, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, -1, -1));
-
         jLabel8.setText("ID");
 
         jLabel9.setText("Precio:");
@@ -338,8 +321,22 @@ public class FrmVerProductos extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        jTabbedPane2.addTab("Agregar Productos", jPanel4);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(577, 498));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        jLabel1.setText("PRODUCTOS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+
+        btnMegaSoft.setText("MegaSoft");
+        btnMegaSoft.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMegaSoftActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMegaSoft, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, -1, -1));
         jPanel1.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
